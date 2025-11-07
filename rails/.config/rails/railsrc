@@ -1,0 +1,9 @@
+--database=sqlite3
+--javascript=importmap
+--skip-test
+--skip-action-cable
+--skip-action-mailbox
+--skip-action-mailer
+--skip-action-text
+--skip-active-storage
+--skip-jbuilder

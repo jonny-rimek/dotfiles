@@ -23,4 +23,11 @@ stow --verbose --target=$HOME TOOLNAME
 ```
 
 
+## Setup for mac
+
+```
+install-packages-mac.sh
+stow-packages-mac.sh
+```
+
 
