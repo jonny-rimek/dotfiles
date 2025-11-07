@@ -3,8 +3,6 @@
 ## Add a new dotfile to the repo to be consumed by GNU stow 
 
 ```
-``` 
-```
 # Change into this directory, path might be different
 cd ~/dev/dotfiles
 
@@ -22,8 +20,6 @@ stow --verbose --simulate --target=$HOME TOOLNAME
 
 # 5. Actually stow it, if the plan looks good
 stow --verbose --target=$HOME TOOLNAME
-```
-```
 ```
 
 
