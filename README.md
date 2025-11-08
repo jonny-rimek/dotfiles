@@ -32,10 +32,12 @@ stow-packages-mac.sh
 
 
 <!-- TODO:  -->
+<!-- - move tmux window leader + vim motion -->
 <!-- - install tmux -->
 <!-- - save my solarized dark background image in this repo-->
 <!-- - create tmux cheatsheet -->
 <!-- - always show hidden files neotree -->
+<!-- - no border by default if window is maximized? -->
 <!-- - move nvim config back and modularize it-->
 <!-- - remove time and date from tmux theme -->
 <!-- - increase notification timeout and window size -->

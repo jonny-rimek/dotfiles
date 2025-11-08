@@ -14,6 +14,7 @@ set -e
 SUPPLEMENT_SCRIPTS=(
   "remove-unwanted-software.sh"
   "fix-dualboot-time.sh"
+  "install-wget.sh"
   "install-firefox.sh"
   "install-veracrypt.sh"
   "install-keepassxc.sh"
