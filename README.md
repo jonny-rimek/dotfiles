@@ -35,9 +35,14 @@ stow-packages-mac.sh
 <!-- - install tmux -->
 <!-- - move nvim config back and modularize it-->
 <!-- - remove time and date from tmux theme -->
-<!-- - remove time from nvim theme -->
+<!-- - remove time, lines and % from nvim theme -->
 <!-- - tmux theme solarized dark -->
+<!-- - always hide status bar of hyprland -->
+<!-- - fix vimium j going up and vice versa map <s-j> NextTab didn''t change the behaviour (or the other one)'-->
 <!-- - rebind autocomplete to tab not return-->
+<!-- - hide tabs completely -->
+<!-- - rebind space space to recent files in neovim -->
+<!-- - never hide markdown code shit -->
 <!-- - alias for stow simulate and for realz -->
 <!-- - move all hyprland config to dedicated file, managed by stow, and create a script that adds the import idempotently   -->
 <!-- - switch light theme in the morning -->
