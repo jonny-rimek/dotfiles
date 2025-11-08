@@ -19,6 +19,7 @@ SUPPLEMENT_SCRIPTS=(
   "install-keepassxc.sh"
   "install-zathura.sh"
   "install-bluetui.sh"
+  "install-tmux.sh"
 )
 
 # ============================================================================
