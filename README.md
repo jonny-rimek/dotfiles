@@ -31,3 +31,25 @@ stow-packages-mac.sh
 ```
 
 
+<!-- TODO:  -->
+<!-- - install tmux -->
+<!-- - move nvim config back and modularize it-->
+<!-- - remove time and date from tmux theme -->
+<!-- - remove time from nvim theme -->
+<!-- - tmux theme solarized dark -->
+<!-- - rebind autocomplete to tab not return-->
+<!-- - alias for stow simulate and for realz -->
+<!-- - move all hyprland config to dedicated file, managed by stow, and create a script that adds the import idempotently   -->
+<!-- - switch light theme in the morning -->
+<!-- - integrate stow as a last step and do steps to clean up potentially existing config, only ask for confirmation if there are planned changes -->
+<!-- - sync zathora to omarchy theme  -->
+<!-- - import old dotfiles  -->
+<!-- - veracrypt alias  -->
+<!-- - remove spellcheck from nvim-->
+<!-- - no auto complete in .md -->
+<!-- - -->
+<!-- - -->
+<!-- - -->
+
+<!-- TODO: LOW PRIO  -->
+<!-- - install ruby and shit via script and via mise   -->
