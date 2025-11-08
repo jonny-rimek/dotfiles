@@ -33,6 +33,16 @@ stow-packages-mac.sh
 
 <!-- TODO:  -->
 <!-- - install tmux -->
+<!-- - save my solarized dark background image in this repo-->
+<!-- - create tmux cheatsheet -->
+<!-- - move nvim config back and modularize it-->
+<!-- - remove time and date from tmux theme -->
+<!-- - increase notification timeout and window size -->
+<!-- - remove time, lines and % from nvim theme -->
+<!-- - tmux theme solarized dark -->
+<!-- - always hide status bar of hyprland -->
+<!-- - fix vimium j going up and vice versa map <s-j> NextTab didn''t change the behaviour (or the other one)'-->
+<!-- - rebind autocomplete to tab not return-->
 <!-- - move nvim config back and modularize it-->
 <!-- - remove time and date from tmux theme -->
 <!-- - remove time, lines and % from nvim theme -->

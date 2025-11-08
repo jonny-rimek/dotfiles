@@ -1,0 +1,19 @@
+# ~/.config/tmuxinator/tn4.yml
+
+name: tn4
+root: ~/dev/tn4
+
+windows:
+  - editor:
+      panes:
+        - nvim .
+  - server:
+      panes:
+        - bin/rails server
+  - console:
+      panes:
+        - bin/rails console
+  - tests:
+  - git:
+      panes:
+        - lazygit

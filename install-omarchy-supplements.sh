@@ -20,6 +20,7 @@ SUPPLEMENT_SCRIPTS=(
   "install-zathura.sh"
   "install-bluetui.sh"
   "install-tmux.sh"
+  "install-tmuxinator.sh"
 )
 
 # ============================================================================
