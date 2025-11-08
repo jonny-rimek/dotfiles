@@ -7,13 +7,13 @@ windows:
   - editor:
       panes:
         - nvim .
-  - server:
-      panes:
-        - bin/rails server
-  - console:
-      panes:
-        - bin/rails console
-  - tests:
+  - shell:
   - git:
       panes:
         - lazygit
+  - console:
+      panes:
+        - bin/rails console
+  - server:
+      panes:
+        - bin/rails server

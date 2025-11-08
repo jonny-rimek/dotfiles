@@ -1,0 +1,10 @@
+# ~/.config/tmuxinator/dotfiles.yml
+
+name: config
+root: ~/.config
+
+windows:
+  - editor:
+      panes:
+        - nvim .
+  - console:
