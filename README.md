@@ -35,6 +35,7 @@ stow-packages-mac.sh
 <!-- - install tmux -->
 <!-- - save my solarized dark background image in this repo-->
 <!-- - create tmux cheatsheet -->
+<!-- - always show hidden files neotree -->
 <!-- - move nvim config back and modularize it-->
 <!-- - remove time and date from tmux theme -->
 <!-- - increase notification timeout and window size -->
