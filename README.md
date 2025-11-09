@@ -31,39 +31,35 @@ stow-packages-mac.sh
 ```
 
 
-<!-- TODO:  -->
-<!-- - save my solarized dark background image in this repo-->
+<!-- TODO: misc -->
 <!-- - create tmux cheatsheet -->
-<!-- - always show hidden files neotree -->
-<!-- - no border by default if window is maximized? -->
-<!-- - move nvim config back and modularize it-->
-<!-- - remove time and date from tmux theme -->
-<!-- - increase notification timeout and window size -->
-<!-- - remove time, lines and % from nvim theme -->
-<!-- - tmux theme solarized dark -->
-<!-- - always hide status bar of hyprland -->
-<!-- - fix vimium j going up and vice versa map <s-j> NextTab didn''t change the behaviour (or the other one)'-->
-<!-- - rebind autocomplete to tab not return-->
-<!-- - move nvim config back and modularize it-->
-<!-- - remove time and date from tmux theme -->
-<!-- - remove time, lines and % from nvim theme -->
-<!-- - tmux theme solarized dark -->
-<!-- - always hide status bar of hyprland -->
-<!-- - fix vimium j going up and vice versa map <s-j> NextTab didn''t change the behaviour (or the other one)'-->
-<!-- - rebind autocomplete to tab not return-->
-<!-- - hide tabs completely -->
-<!-- - rebind space space to recent files in neovim -->
-<!-- - never hide markdown code shit -->
 <!-- - alias for stow simulate and for realz -->
-<!-- - move all hyprland config to dedicated file, managed by stow, and create a script that adds the import idempotently   -->
-<!-- - switch light theme in the morning -->
-<!-- - integrate stow as a last step and do steps to clean up potentially existing config, only ask for confirmation if there are planned changes -->
+<!-- - save my solarized dark background image in this repo-->
+<!-- - put solarized themes in stow repo to symlink em -->
+<!-- - fix vimium j going up and vice versa map <s-j> NextTab didn''t change the behaviour (or the other one)'-->
 <!-- - sync zathora to omarchy theme  -->
-<!-- - import old dotfiles  -->
 <!-- - veracrypt alias  -->
-<!-- - remove spellcheck from nvim-->
+<!-- - import old dotfiles  -->
+<!-- - integrate stow as a last step and do steps to clean up potentially existing config, only ask for confirmation if there are planned changes -->
+
+<!-- TODO: nvim -->
+<!-- - always show hidden files neotree -->
+<!-- - rebind space space to recent files in neovim -->
+<!-- - rebind autocomplete to tab not return-->
+<!-- - modularize config, so that omarchy shit stays in place and we only add new stuff via stow -->
+<!-- - remove time, lines and % from nvim theme -->
+<!-- - never hide markdown code shit -->
+<!-- - remove spellcheck from -->
 <!-- - no auto complete in .md -->
-<!-- - -->
+<!-- - hide tabs completely -->
+<!-- - increase notification timeout and window size -->
+
+<!-- TODO: hyprland -->
+<!-- - no border by default if window is maximized? -->
+<!-- - move all hyprland config to dedicated file, managed by stow, and create a script that adds the import idempotently   -->
+<!-- - increase notification timeout and window size -->
+<!-- - always hide status bar of -->
+<!-- - switch light theme in the morning -->
 <!-- - -->
 <!-- - -->
 
