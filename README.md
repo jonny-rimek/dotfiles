@@ -33,7 +33,13 @@ stow-packages-mac.sh
 
 <!-- TODO: misc -->
 <!-- - create tmux cheatsheet -->
-<!-- - alias for stow simulate and for realz -->
+<!-- - ~~add new bash aliases file from show~~ -->
+  <!-- - alias for stow simulate and for realz -->
+  <!-- - alias for tmux -->
+  <!-- - alias for tmuxinator -->
+  <!-- - rebind eza aliases -->
+
+<!-- - remove all other themes -->
 <!-- - save my solarized dark background image in this repo-->
 <!-- - put solarized themes in stow repo to symlink em -->
 <!-- - fix vimium j going up and vice versa map <s-j> NextTab didn''t change the behaviour (or the other one)'-->
@@ -43,19 +49,18 @@ stow-packages-mac.sh
 <!-- - integrate stow as a last step and do steps to clean up potentially existing config, only ask for confirmation if there are planned changes -->
 
 <!-- TODO: nvim -->
-<!-- - always show hidden files neotree -->
+<!-- - fix theme breaking on every config change -->
 <!-- - rebind space space to recent files in neovim -->
 <!-- - rebind autocomplete to tab not return-->
-<!-- - modularize config, so that omarchy shit stays in place and we only add new stuff via stow -->
-<!-- - remove time, lines and % from nvim theme -->
+<!-- - remove time, (git?), lines and % from nvim theme -->
 <!-- - never hide markdown code shit -->
 <!-- - remove spellcheck from -->
 <!-- - no auto complete in .md -->
 <!-- - hide tabs completely -->
 <!-- - increase notification timeout and window size -->
+<!-- - modularize config, so that omarchy shit stays in place and we only add new stuff via stow -->
 
 <!-- TODO: hyprland -->
-<!-- - no border by default if window is maximized? -->
 <!-- - move all hyprland config to dedicated file, managed by stow, and create a script that adds the import idempotently   -->
 <!-- - increase notification timeout and window size -->
 <!-- - always hide status bar of -->

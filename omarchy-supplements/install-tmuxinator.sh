@@ -109,7 +109,7 @@ fi
 echo
 print_success "tmuxinator is ready to use!"
 echo
-rint_info "Quick start:"
+print_info "Quick start:"
 echo "  • Create project: tmuxinator new myproject"
 echo "  • Edit project: tmuxinator edit myproject"
 echo "  • Start project: tmuxinator start myproject"

@@ -22,6 +22,7 @@ SUPPLEMENT_SCRIPTS=(
   "install-bluetui.sh"
   "install-tmux.sh"
   "install-tmuxinator.sh"
+  "clean-nvim.sh"
 )
 
 # ============================================================================
