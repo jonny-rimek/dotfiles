@@ -32,8 +32,8 @@ stow-packages-mac.sh
 
 
 <!-- TODO:  -->
-<!-- - install tmux -->
 <!-- - save my solarized dark background image in this repo-->
+<!-- - install tmux -->
 <!-- - create tmux cheatsheet -->
 <!-- - always show hidden files neotree -->
 <!-- - no border by default if window is maximized? -->
