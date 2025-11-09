@@ -32,8 +32,6 @@ stow-packages-mac.sh
 
 
 <!-- TODO:  -->
-<!-- - ai prompt to help generate install scripts and shit ->
-<!-- - move tmux window leader + vim motion -->
 <!-- - install tmux -->
 <!-- - save my solarized dark background image in this repo-->
 <!-- - create tmux cheatsheet -->
