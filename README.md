@@ -33,8 +33,6 @@ stow-packages-mac.sh
 
 <!-- TODO: misc -->
 <!-- - create tmux cheatsheet -->
-  <!-- - alias for stow simulate and for realz -->
-  <!-- - alias for tmux -->
   <!-- - rebind eza aliases -->
 
 <!-- - save my solarized dark background image in this repo-->
@@ -47,6 +45,7 @@ stow-packages-mac.sh
 <!-- - remove all other themes or not, not sure its a good idea probably gonna break shit-->
 
 <!-- TODO: nvim -->
+<!-- - increase notification timeout and window size -->
 <!-- - fix theme breaking on every config change -->
 <!-- - rebind space space to recent files in neovim -->
 <!-- - rebind autocomplete to tab not return-->
@@ -55,7 +54,6 @@ stow-packages-mac.sh
 <!-- - remove spellcheck from -->
 <!-- - no auto complete in .md -->
 <!-- - hide tabs completely -->
-<!-- - increase notification timeout and window size -->
 <!-- - modularize config, so that omarchy shit stays in place and we only add new stuff via stow -->
 
 <!-- TODO: hyprland -->
