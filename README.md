@@ -33,13 +33,10 @@ stow-packages-mac.sh
 
 <!-- TODO: misc -->
 <!-- - create tmux cheatsheet -->
-<!-- - ~~add new bash aliases file from show~~ -->
   <!-- - alias for stow simulate and for realz -->
   <!-- - alias for tmux -->
-  <!-- - alias for tmuxinator -->
   <!-- - rebind eza aliases -->
 
-<!-- - remove all other themes -->
 <!-- - save my solarized dark background image in this repo-->
 <!-- - put solarized themes in stow repo to symlink em -->
 <!-- - fix vimium j going up and vice versa map <s-j> NextTab didn''t change the behaviour (or the other one)'-->
@@ -47,6 +44,7 @@ stow-packages-mac.sh
 <!-- - veracrypt alias  -->
 <!-- - import old dotfiles  -->
 <!-- - integrate stow as a last step and do steps to clean up potentially existing config, only ask for confirmation if there are planned changes -->
+<!-- - remove all other themes or not, not sure its a good idea probably gonna break shit-->
 
 <!-- TODO: nvim -->
 <!-- - fix theme breaking on every config change -->

@@ -22,7 +22,8 @@ SUPPLEMENT_SCRIPTS=(
   "install-bluetui.sh"
   "install-tmux.sh"
   "install-tmuxinator.sh"
-  "clean-nvim.sh"
+  "install-bash-aliases.sh"
+  # "clean-nvim.sh" # the config is ass i go back to omarchy default until i understand nvim better
 )
 
 # ============================================================================
