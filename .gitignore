@@ -6,3 +6,4 @@ yazi/.config/yazi/*
 !yazi/.config/yazi/keymap.toml
 !yazi/.config/yazi/theme.toml
 !yazi/.config/yazi/init.lua
+!yazi/.config/yazi/package.toml
