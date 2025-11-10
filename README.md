@@ -46,15 +46,15 @@ stow-packages-mac.sh
 
 <!-- TODO: nvim -->
 <!-- - increase notification timeout and window size -->
-<!-- - fix theme breaking on every config change -->
-<!-- - rebind space space to recent files in neovim -->
+<!-- - modularize config, so that omarchy shit stays in place and we only add new stuff via stow -->
 <!-- - rebind autocomplete to tab not return-->
 <!-- - remove time, (git?), lines and % from nvim theme -->
 <!-- - never hide markdown code shit -->
-<!-- - remove spellcheck from -->
+<!-- - remove spellcheck -->
+<!-- - rebind space space to recent files in neovim / fix up file finding recent behaviour e.g. no dotfiles? recent files from other projects etc -->
 <!-- - no auto complete in .md -->
 <!-- - hide tabs completely -->
-<!-- - modularize config, so that omarchy shit stays in place and we only add new stuff via stow -->
+<!-- - fix theme breaking on every config change -->
 
 <!-- TODO: hyprland -->
 <!-- - move all hyprland config to dedicated file, managed by stow, and create a script that adds the import idempotently   -->
