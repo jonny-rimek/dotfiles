@@ -88,14 +88,35 @@ else
     print_success "Lazygit already installed ($(lazygit --version | head -n1))"
 fi
 
+# Install tmux
+if ! command -v tmux &> /dev/null; then
+    print_info "Installing tmux..."
+    brew install tmux
+    print_success "tmux installed"
+else
+    print_success "tmux already installed ($(tmux -V))"
+fi
+
+# Install tmuxinator
+if ! command -v tmuxinator &> /dev/null; then
+    print_info "Installing tmuxinator..."
+    brew install tmuxinator
+    print_success "tmuxinator installed"
+else
+    print_success "tmuxinator already installed ($(tmuxinator version))"
+fi
+
 echo
 print_success "All tools installed successfully!"
 echo
 print_info "Next steps:"
-echo "  1. run stow-mac.sh
+echo "  1. Run stow-mac.sh to symlink your dotfiles"
+echo "  2. Configure tmuxinator projects: tmuxinator new <project-name>"
 echo
 print_info "Installed tools:"
-echo "  • Homebrew: $(brew --version | head -n1)"
-echo "  • Stow:     $(stow --version | head -n1)"
-echo "  • Neovim:   $(nvim --version | head -n1)"
-echo "  • Lazygit:  $(lazygit --version 2>&1 | head -n1)"
+echo "  • Homebrew:   $(brew --version | head -n1)"
+echo "  • Stow:       $(stow --version | head -n1)"
+echo "  • Neovim:     $(nvim --version | head -n1)"
+echo "  • Lazygit:    $(lazygit --version 2>&1 | head -n1)"
+echo "  • tmux:       $(tmux -V)"
+echo "  • tmuxinator: $(tmuxinator version)"
