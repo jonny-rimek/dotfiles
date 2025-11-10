@@ -23,8 +23,9 @@ SUPPLEMENT_SCRIPTS=(
   "install-tmux.sh"
   "install-tmuxinator.sh"
   "install-bash-aliases.sh"
-  # "clean-nvim.sh" # the config is ass i go back to omarchy default until i understand nvim better
+  "install-yazi.sh"
 )
+# "clean-nvim.sh" # the config is ass i go back to omarchy default until i understand nvim better
 
 # ============================================================================
 # Script logic below

@@ -1,0 +1,4 @@
+[manager]
+prepend_keymap = [
+  { on = [ "?" ], exec = "help", desc = "Open help menu" },
+]
