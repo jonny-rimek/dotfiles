@@ -57,6 +57,7 @@ stow-packages-mac.sh
 <!-- - fix theme breaking on every config change -->
 
 <!-- TODO: hyprland -->
+<!-- - start every window in fullscreen or smth -->
 <!-- - move all hyprland config to dedicated file, managed by stow, and create a script that adds the import idempotently   -->
 <!-- - increase notification timeout and window size -->
 <!-- - always hide status bar of -->

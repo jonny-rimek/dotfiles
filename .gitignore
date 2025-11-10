@@ -1,0 +1,8 @@
+# Yazi - ignore everything in config dir
+yazi/.config/yazi/*
+
+# But keep essential config files
+!yazi/.config/yazi/yazi.toml
+!yazi/.config/yazi/keymap.toml
+!yazi/.config/yazi/theme.toml
+!yazi/.config/yazi/init.lua
