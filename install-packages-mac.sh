@@ -97,6 +97,15 @@ else
     print_success "tmux already installed ($(tmux -V))"
 fi
 
+# Install TPM (Tmux Plugin Manager)
+if [ ! -d ~/.tmux/plugins/tpm ]; then
+    print_info "Installing TPM (Tmux Plugin Manager)..."
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    print_success "TPM installed"
+else
+    print_success "TPM already installed"
+fi
+
 # Install tmuxinator
 if ! command -v tmuxinator &> /dev/null; then
     print_info "Installing tmuxinator..."
@@ -111,7 +120,9 @@ print_success "All tools installed successfully!"
 echo
 print_info "Next steps:"
 echo "  1. Run stow-mac.sh to symlink your dotfiles"
-echo "  2. Configure tmuxinator projects: tmuxinator new <project-name>"
+echo "  2. Source TPM in your tmux config: run-shell ~/.tmux/plugins/tpm/tpm"
+echo "  3. Install TPM plugins: prefix + I (Ctrl+B + I by default)"
+echo "  4. Configure tmuxinator projects: tmuxinator new <project-name>"
 echo
 print_info "Installed tools:"
 echo "  • Homebrew:   $(brew --version | head -n1)"
@@ -119,4 +130,5 @@ echo "  • Stow:       $(stow --version | head -n1)"
 echo "  • Neovim:     $(nvim --version | head -n1)"
 echo "  • Lazygit:    $(lazygit --version 2>&1 | head -n1)"
 echo "  • tmux:       $(tmux -V)"
+echo "  • TPM:        installed at ~/.tmux/plugins/tpm"
 echo "  • tmuxinator: $(tmuxinator version)"

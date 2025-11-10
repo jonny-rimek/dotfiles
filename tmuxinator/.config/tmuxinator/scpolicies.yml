@@ -1,0 +1,13 @@
+# ~/.config/tmuxinator/dotfiles.yml
+
+name: scpolicies
+root: ~/dev/infra.terraform.policies
+
+windows:
+  - editor:
+      panes:
+        - vim .
+  - console:
+  - git:
+      panes:
+        - lazygit
