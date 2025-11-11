@@ -33,6 +33,7 @@ stow-packages-mac.sh
 
 <!-- TODO: misc -->
 <!-- - create tmux cheatsheet -->
+<!-- - update install-yazi.sh to just run ya pkg install instead-->
 
 <!-- - save my solarized dark background image in this repo-->
 <!-- - put solarized themes in stow repo to symlink em -->

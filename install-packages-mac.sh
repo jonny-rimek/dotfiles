@@ -3,132 +3,161 @@
 # install-packages-mac.sh
 # Installs essential development tools on macOS for dotfiles management
 #
-# Usage: ./install-packages-mac.sh
-#
 
-set -e  # Exit on error
+set -e
+source "$(dirname "$0")/helpers.sh"
 
-# Colors for output
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-YELLOW='\033[1;33m'
-BLUE='\033[0;34m'
-NC='\033[0m' # No Color
-
-# Helper functions
-print_info() {
-    echo -e "${BLUE}==>${NC} $1"
-}
-
-print_success() {
-    echo -e "${GREEN}✓${NC} $1"
-}
-
-print_warning() {
-    echo -e "${YELLOW}!${NC} $1"
-}
-
-print_error() {
-    echo -e "${RED}✗${NC} $1"
-}
+print_header "macOS Development Environment Setup"
 
 # Check if running on macOS
 if [[ "$OSTYPE" != "darwin"* ]]; then
-    print_error "This script is for macOS only"
-    exit 1
+  print_error "This script is for macOS only"
+  exit 1
 fi
-
-print_info "Starting macOS development environment setup..."
-echo
 
 # Install Homebrew if not present
-if ! command -v brew &> /dev/null; then
-    print_info "Installing Homebrew..."
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+if ! command_exists brew; then
+  print_info "Installing Homebrew..."
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-    # Add Homebrew to PATH for Apple Silicon Macs
-    if [[ $(uname -m) == "arm64" ]]; then
-        echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
-        eval "$(/opt/homebrew/bin/brew shellenv)"
-    fi
+  # Add Homebrew to PATH for Apple Silicon Macs
+  if [[ $(uname -m) == "arm64" ]]; then
+    print_info "Detected Apple Silicon - configuring Homebrew path..."
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+  fi
 
-    print_success "Homebrew installed"
+  print_success "Homebrew installed"
 else
-    print_success "Homebrew already installed"
-    print_info "Updating Homebrew..."
-    brew update
+  print_success "Homebrew already installed"
+  print_info "Updating Homebrew..."
+  brew update
 fi
 
 echo
 
-# Install Stow
-if ! command -v stow &> /dev/null; then
-    print_info "Installing GNU Stow..."
-    brew install stow
-    print_success "Stow installed"
-else
-    print_success "Stow already installed ($(stow --version | head -n1))"
-fi
+print_header "Installing Development Tools"
 
-# Install Neovim
-if ! command -v nvim &> /dev/null; then
-    print_info "Installing Neovim..."
-    brew install neovim
-    print_success "Neovim installed"
-else
-    print_success "Neovim already installed ($(nvim --version | head -n1))"
-fi
+# CLI tools (formulas)
+CLI_TOOLS=(
+  "stow"       # Dotfile symlink manager
+  "neovim"     # Terminal text editor
+  "tmux"       # Terminal multiplexer
+  "lazygit"    # Terminal git client
+  "tmuxinator" # tmux session manager
+  "yazi"       # Terminal file manager
+)
 
-# Install Lazygit
-if ! command -v lazygit &> /dev/null; then
-    print_info "Installing Lazygit..."
-    brew install lazygit
-    print_success "Lazygit installed"
-else
-    print_success "Lazygit already installed ($(lazygit --version | head -n1))"
-fi
+# Optional dependencies for enhanced functionality
+OPTIONAL_DEPS=(
+  "ffmpegthumbnailer" # Video thumbnails for yazi
+  "fd"                # Fast file searching
+  "ripgrep"           # Fast content searching
+  "fzf"               # Fuzzy finder
+  "zoxide"            # Smart directory navigation
+  "imagemagick"       # Image processing/thumbnails
+  "poppler"           # PDF previews
+  "jq"                # JSON processing
+)
 
-# Install tmux
-if ! command -v tmux &> /dev/null; then
-    print_info "Installing tmux..."
-    brew install tmux
-    print_success "tmux installed"
-else
-    print_success "tmux already installed ($(tmux -V))"
-fi
+# Install CLI tools
+print_info "Installing core development tools..."
+for tool in "${CLI_TOOLS[@]}"; do
+  if command_exists "$tool"; then
+    print_success "$tool already installed"
+  else
+    print_info "Installing $tool..."
+    if brew install "$tool"; then
+      print_success "Installed $tool"
+    else
+      print_error "Failed to install $tool"
+      exit 1
+    fi
+  fi
+done
+
+echo
+
+# Install optional dependencies
+print_info "Installing optional dependencies for enhanced functionality..."
+for pkg in "${OPTIONAL_DEPS[@]}"; do
+  if command_exists "$pkg" || brew list "$pkg" &>/dev/null; then
+    print_success "$pkg already installed"
+  else
+    print_info "Installing $pkg..."
+    if brew install "$pkg"; then
+      print_success "Installed $pkg"
+    else
+      print_warning "Failed to install optional dependency: $pkg (continuing)"
+    fi
+  fi
+done
+
+echo
 
 # Install TPM (Tmux Plugin Manager)
+print_header "Tmux Plugin Manager (TPM)"
 if [ ! -d ~/.tmux/plugins/tpm ]; then
-    print_info "Installing TPM (Tmux Plugin Manager)..."
-    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-    print_success "TPM installed"
+  print_info "Installing TPM..."
+  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+  print_success "TPM installed"
 else
-    print_success "TPM already installed"
-fi
-
-# Install tmuxinator
-if ! command -v tmuxinator &> /dev/null; then
-    print_info "Installing tmuxinator..."
-    brew install tmuxinator
-    print_success "tmuxinator installed"
-else
-    print_success "tmuxinator already installed ($(tmuxinator version))"
+  print_success "TPM already installed"
 fi
 
 echo
-print_success "All tools installed successfully!"
+
+# Install yazi plugins
+print_header "Yazi Plugins"
+if command_exists yazi; then
+  if [ -f ~/.config/yazi/package.toml ]; then
+    if command_exists ya; then
+      print_info "Found ~/.config/yazi/package.toml - installing packages..."
+      if ya pkg install; then
+        print_success "Yazi packages installed from package.toml"
+      else
+        print_error "Failed to install yazi packages"
+      fi
+    else
+      print_warning "ya (Yazi package manager) not available yet - restart your shell and run: ya pkg install"
+    fi
+  else
+    print_warning "~/.config/yazi/package.toml not found"
+    print_info "To install yazi plugins, first stow the yazi config:"
+    print_info "  cd ~/dotfiles && stow yazi"
+    print_info "Then run: ya pkg install"
+  fi
+else
+  print_warning "yazi not found - skipping plugins"
+fi
+
 echo
-print_info "Next steps:"
-echo "  1. Run stow-mac.sh to symlink your dotfiles"
-echo "  2. Source TPM in your tmux config: run-shell ~/.tmux/plugins/tpm/tpm"
-echo "  3. Install TPM plugins: prefix + I (Ctrl+B + I by default)"
-echo "  4. Configure tmuxinator projects: tmuxinator new <project-name>"
-echo
-print_info "Installed tools:"
+
+# Verification
+print_header "Installation Verification"
+print_info "Installed versions:"
 echo "  • Homebrew:   $(brew --version | head -n1)"
 echo "  • Stow:       $(stow --version | head -n1)"
-echo "  • Neovim:     $(nvim --version | head -n1)"
-echo "  • Lazygit:    $(lazygit --version 2>&1 | head -n1)"
+echo "  • Neovim:     $(nvim --version | head -n1 | cut -d' ' -f1-2)"
 echo "  • tmux:       $(tmux -V)"
-echo "  • TPM:        installed at ~/.tmux/plugins/tpm"
-echo "  • tmuxinator: $(tmuxinator version)"
+echo "  • Lazygit:    $(lazygit --version 2>&1 | head -n1)"
+echo "  • tmuxinator: $(tmuxinator version 2>&1 | head -n1)"
+if command_exists yazi; then
+  echo "  • yazi:       $(yazi --version)"
+fi
+
+echo
+
+# Next steps
+print_header "Next Steps"
+print_info "1. Stow your dotfiles:"
+print_info "   cd ~/dotfiles && stow --dry-run ."
+print_info "   Review, then: stow ."
+echo
+print_info "2. Configure tmux plugins:"
+print_info "   - Launch tmux and press: prefix + I (Ctrl+B + I by default)"
+echo
+print_info "3. Install yazi plugins (if not done):"
+print_info "   - Run: ya pkg install"
+echo
+
+print_success "macOS setup complete!"
