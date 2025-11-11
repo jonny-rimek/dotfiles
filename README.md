@@ -44,6 +44,7 @@ stow-packages-mac.sh
 <!-- - remove all other themes or not, not sure its a good idea probably gonna break shit-->
 
 <!-- TODO: nvim -->
+<!-- - neotree doesnt update git unless i close and open -->
 <!-- - fuzzy find is actually fucking dog shit dunno, ignores .files doesn't find new files? -->
 <!-- - rebind space space to recent files in neovim / fix up file finding recent behaviour e.g. no dotfiles? recent files from other projects etc -->
 <!-- - increase notification timeout and window size -->
@@ -57,6 +58,7 @@ stow-packages-mac.sh
 <!-- - fix theme breaking on every config change -->
 
 <!-- TODO: hyprland -->
+<!-- - rebind super tab to switch to latest workspace instead of next, currently this is ctrl super tab -->
 <!-- - start every window in fullscreen or smth -->
 <!-- - move all hyprland config to dedicated file, managed by stow, and create a script that adds the import idempotently   -->
 <!-- - increase notification timeout and window size -->
