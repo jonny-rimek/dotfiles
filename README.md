@@ -33,7 +33,6 @@ stow-packages-mac.sh
 
 <!-- TODO: misc -->
 <!-- - create tmux cheatsheet -->
-  <!-- - rebind eza aliases -->
 
 <!-- - save my solarized dark background image in this repo-->
 <!-- - put solarized themes in stow repo to symlink em -->
@@ -45,13 +44,14 @@ stow-packages-mac.sh
 <!-- - remove all other themes or not, not sure its a good idea probably gonna break shit-->
 
 <!-- TODO: nvim -->
+<!-- - fuzzy find is actually fucking dog shit dunno, ignores .files doesn't find new files? -->
+<!-- - rebind space space to recent files in neovim / fix up file finding recent behaviour e.g. no dotfiles? recent files from other projects etc -->
 <!-- - increase notification timeout and window size -->
 <!-- - modularize config, so that omarchy shit stays in place and we only add new stuff via stow -->
 <!-- - rebind autocomplete to tab not return-->
 <!-- - remove time, (git?), lines and % from nvim theme -->
 <!-- - never hide markdown code shit -->
 <!-- - remove spellcheck -->
-<!-- - rebind space space to recent files in neovim / fix up file finding recent behaviour e.g. no dotfiles? recent files from other projects etc -->
 <!-- - no auto complete in .md -->
 <!-- - hide tabs completely -->
 <!-- - fix theme breaking on every config change -->
