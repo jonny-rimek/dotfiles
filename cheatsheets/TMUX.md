@@ -24,6 +24,9 @@ at the same time, detach from the session go to a different project and switch b
 <leader> s  # from inside tmux 
 tmux ls     # from cli 
 
+# new window
+<leader> c
+
 # split pane, TODO: rebind to something more ergonomic
 <leader> %
 
