@@ -53,8 +53,8 @@ alt j
 # window directly
 alt NUMBER
 
-# kill window 
-<leader> &
+# kill window capital X
+<leader> X
 ```
 
 ### Panes
@@ -67,8 +67,11 @@ I'm not in love with panes, I mostly use windows(not the OS :D), so the shortcut
 # zoom into pane, makes a pane temporarily fullscreen
 <leader> z
 
-# navigate panes, TODO: bind to vim motions if i ever use panes more, i actually did but it stopped working
-<leader> arrow keys
+# navigate to right pane
+<leader> k
+
+# navigate to left pane
+<leader> j
 
 # convert pane to window
 <leader> !

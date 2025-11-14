@@ -33,14 +33,14 @@ stow-packages-mac.sh
 
 <!-- TODO: misc -->
 <!-- - create cheatsheet -->
-  <!-- - tmux -->
   <!-- - yazi -->
   <!-- - nvim -->
   <!-- - lazygit -->
   <!-- -  -->
-<!-- - update yazi install to run package install instead of installing a specific pkg -->
 <!-- - manual setup steps in signal document them here or automate -->
 
+<!-- - auto open obsidian in a dedicated workspace always -->
+<!-- - auto open protonpass as a web app in a dedicated workspace always -->
 <!-- - save my solarized dark background image in this repo-->
 <!-- - put solarized themes in stow repo to symlink em -->
 <!-- - fix vimium j going up and vice versa map <s-j> NextTab didn''t change the behaviour (or the other one)'-->
@@ -51,16 +51,17 @@ stow-packages-mac.sh
 <!-- - remove all other themes or not, not sure its a good idea probably gonna break shit-->
 
 <!-- TODO: nvim -->
+<!-- - remove time, (git?), lines and % from nvim theme -->
 <!-- - neotree doesnt update git unless i close and open -->
 <!-- - fuzzy find is actually fucking dog shit dunno, ignores .files doesn't find new files? -->
 <!-- - rebind space space to recent files in neovim / fix up file finding recent behaviour e.g. no dotfiles? recent files from other projects etc -->
 <!-- - increase notification timeout and window size -->
 <!-- - modularize config, so that omarchy shit stays in place and we only add new stuff via stow -->
 <!-- - rebind autocomplete to tab not return-->
-<!-- - remove time, (git?), lines and % from nvim theme -->
 <!-- - never hide markdown code shit -->
 <!-- - remove spellcheck -->
 <!-- - no auto complete in .md -->
+
 <!-- - hide tabs completely -->
 <!-- - fix theme breaking on every config change -->
 
