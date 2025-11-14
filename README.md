@@ -70,6 +70,8 @@ stow-packages-mac.sh
 <!-- TODO: hyprland -->
 <!-- - stow a file hyprland for all new customm config -->
   <!-- - start every window in fullscreen or smth -->
+  <!-- - shortcut for shutdown -->
+  <!-- - shortcut for suspend -->
   <!-- - rebind super tab to switch to latest workspace instead of next, currently this is ctrl super tab -->
   <!-- - increase notification timeout and window size -->
   <!-- - always hide status bar -->
