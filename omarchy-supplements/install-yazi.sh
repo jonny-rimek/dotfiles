@@ -65,9 +65,8 @@ else
   fi
 fi
 
-# Install relative-motions plugin
-print_header "Relative Line Numbers Plugin"
-print_info "The relative-motions plugin enables vim-like relative line navigation (5j, 3k, etc.)"
+# Install plugins from package.toml
+print_header "Yazi Plugin Installation"
 
 if ! command_exists ya; then
   print_error "ya (Yazi package manager) is not available"
@@ -75,33 +74,21 @@ if ! command_exists ya; then
   exit 1
 fi
 
-# Check if plugin is already installed
-if ya pkg list 2>/dev/null | grep -q "relative-motions"; then
-  print_success "relative-motions plugin already installed"
+print_info "Installing plugins from ~/.config/yazi/package.toml..."
+if ya pkg install; then
+  print_success "Plugins installed successfully"
 else
-  print_info "Installing relative-motions plugin..."
-  if ya pkg add dedukun/relative-motions; then
-    print_success "Plugin installed successfully"
-  else
-    print_error "Failed to install plugin"
-    print_warning "You can install it later with: ya pkg add dedukun/relative-motions"
-  fi
+  print_warning "Plugin installation failed or no package.toml found"
+  print_info "Create ~/.config/yazi/package.toml to define plugins"
 fi
 
 # Print usage information
-print_header "Configuration Required"
+print_header "Configuration"
+print_info "Ensure your yazi config is stowed:"
+print_info "  stow yazi"
 print_info ""
-print_info "Add this to ~/.config/yazi/init.lua:"
-print_info ""
-echo '  require("relative-motions"):setup({
-    show_numbers = "relative",
-    show_motion = true,
-  })'
-print_info ""
-print_info "Add keybindings to ~/.config/yazi/keymap.toml:"
-print_info "  See example in your stowed yazi config"
-print_info ""
-print_info "Then stow the config: stow yazi"
+print_info "Plugins are defined in ~/.config/yazi/package.toml"
+print_info "After adding new plugins, run: ya install"
 print_info ""
 print_header "Usage"
 print_info "  yazi              - Launch in current directory"
@@ -114,11 +101,6 @@ print_info "  h or ←            - Go to parent directory"
 print_info "  l or →            - Enter directory"
 print_info "  gg/G              - Go to top/bottom"
 print_info "  q                 - Quit"
-print_info ""
-print_info "With relative-motions plugin:"
-print_info "  5j                - Move down 5 files (type 5 then j)"
-print_info "  3k                - Move up 3 files"
-print_info "  10gg              - Jump to line 10"
 print_info ""
 
 print_success "Yazi installation complete!"
