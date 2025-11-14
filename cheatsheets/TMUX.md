@@ -30,8 +30,10 @@ mux PROJECT_NAME               # alias works with auto complete
 # kill session, custom keybind
 <leader> + 
 
-# view all active session
+# switch bewtween active session
 <leader> s  # from inside tmux 
+
+# view all active session
 tmux ls     # from cli 
 
 ```
@@ -42,12 +44,22 @@ tmux ls     # from cli
 # new window
 <leader> c
 
+# next window 
+alt k
+
+# previous window 
+alt j 
+
+# window directly
+alt NUMBER
+
+# kill window 
+<leader> &
 ```
 
 ### Panes
 
 I'm not in love with panes, I mostly use windows(not the OS :D), so the shortcuts are mostly default and as a result quite awkward
-
 ```sh
 # split pane, TODO: rebind to something more ergonomic
 <leader> %

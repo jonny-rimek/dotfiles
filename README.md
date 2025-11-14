@@ -38,6 +38,7 @@ stow-packages-mac.sh
   <!-- - nvim -->
   <!-- - lazygit -->
   <!-- -  -->
+<!-- - update yazi install to run package install instead of installing a specific pkg -->
 <!-- - manual setup steps in signal document them here or automate -->
 
 <!-- - save my solarized dark background image in this repo-->
