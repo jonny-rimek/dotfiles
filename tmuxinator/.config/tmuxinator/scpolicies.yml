@@ -6,8 +6,11 @@ root: ~/dev/infra.terraform.policies
 windows:
   - editor:
       panes:
-        - vim .
+        - while true; do nvim .; done
   - console:
   - git:
       panes:
-        - lazygit
+        - while true; do lazygit; done
+  - yazi:
+      panes:
+        - while true; do yazi; done

@@ -6,5 +6,8 @@ root: ~/.config
 windows:
   - editor:
       panes:
-        - nvim .
+        - while true; do nvim .; done
   - console:
+  - yazi:
+      panes:
+        - while true; do yazi; done

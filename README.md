@@ -51,29 +51,37 @@ stow-packages-mac.sh
 <!-- - remove all other themes or not, not sure its a good idea probably gonna break shit-->
 
 <!-- TODO: nvim -->
-<!-- - remove time, (git?), lines and % from nvim theme -->
-<!-- - neotree doesnt update git unless i close and open -->
-<!-- - fuzzy find is actually fucking dog shit dunno, ignores .files doesn't find new files? -->
-<!-- - rebind space space to recent files in neovim / fix up file finding recent behaviour e.g. no dotfiles? recent files from other projects etc -->
-<!-- - increase notification timeout and window size -->
 <!-- - modularize config, so that omarchy shit stays in place and we only add new stuff via stow -->
-<!-- - rebind autocomplete to tab not return-->
-<!-- - never hide markdown code shit -->
-<!-- - remove spellcheck -->
-<!-- - no auto complete in .md -->
+  <!-- - remove time, (git?), lines and % from nvim theme -->
+  <!-- - neotree doesnt update git unless i close and open -->
+  <!-- - fuzzy find is actually fucking dog shit dunno, ignores .files doesn't find new files? -->
+  <!-- - rebind space space to recent files in neovim / fix up file finding recent behaviour e.g. no dotfiles? recent files from other projects etc -->
+  <!-- - increase notification timeout and window size -->
+  <!-- - rebind autocomplete to tab not return-->
+  <!-- - never hide markdown code shit -->
+  <!-- - remove spellcheck -->
+  <!-- - no auto complete in .md -->
 
+<!-- - move old config into stowed files -->
 <!-- - hide tabs completely -->
 <!-- - fix theme breaking on every config change -->
 
 <!-- TODO: hyprland -->
-<!-- - rebind super tab to switch to latest workspace instead of next, currently this is ctrl super tab -->
-<!-- - start every window in fullscreen or smth -->
+<!-- - stow a file hyprland for all new customm config -->
+  <!-- - start every window in fullscreen or smth -->
+  <!-- - rebind super tab to switch to latest workspace instead of next, currently this is ctrl super tab -->
+  <!-- - increase notification timeout and window size -->
+  <!-- - always hide status bar -->
+  <!-- - switch light theme in the morning -->
+<!-- - -->
 <!-- - move all hyprland config to dedicated file, managed by stow, and create a script that adds the import idempotently   -->
-<!-- - increase notification timeout and window size -->
-<!-- - always hide status bar of -->
-<!-- - switch light theme in the morning -->
 <!-- - -->
-<!-- - -->
+
+<!-- TODO: yazi  -->
+<!-- - shortcut to go to ~/dev directory  -->
+
+<!-- TODO: lazygit  -->
+<!-- -  -->
 
 <!-- TODO: LOW PRIO  -->
 <!-- - install ruby and shit via script and via mise   -->

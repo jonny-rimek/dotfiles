@@ -6,14 +6,17 @@ root: ~/dev/tn4
 windows:
   - editor:
       panes:
-        - nvim .
+        - while true; do nvim .; done
   - shell:
   - git:
       panes:
-        - lazygit
+        - while true; do lazygit; done
+  - yazi:
+      panes:
+        - while true; do yazi; done
   - console:
       panes:
-        - bin/rails console
+        - while true; do bin/rails console; done
   - server:
       panes:
-        - bin/rails server
+        - while true; do bin/rails server; done

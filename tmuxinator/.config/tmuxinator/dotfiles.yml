@@ -6,11 +6,11 @@ root: ~/dev/dotfiles
 windows:
   - editor:
       panes:
-        - nvim .
+        - while true; do nvim .; done
   - console:
   - git:
       panes:
-        - lazygit
+        - while true; do lazygit; done
   - yazi:
       panes:
-        - yazi
+        - while true; do yazi; done
