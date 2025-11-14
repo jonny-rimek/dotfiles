@@ -64,6 +64,7 @@ stow-packages-mac.sh
 
 <!-- - move old config into stowed files -->
 <!-- - hide tabs completely -->
+<!-- - don't start with neo tree open -->
 <!-- - fix theme breaking on every config change -->
 
 <!-- TODO: hyprland -->
@@ -79,6 +80,7 @@ stow-packages-mac.sh
 
 <!-- TODO: yazi  -->
 <!-- - shortcut to go to ~/dev directory  -->
+<!-- - unbind enter and only open with o/O -->
 
 <!-- TODO: lazygit  -->
 <!-- -  -->

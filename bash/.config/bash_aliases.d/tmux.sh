@@ -9,3 +9,7 @@ _mux_complete() {
   COMPREPLY=($(compgen -W "$(tmuxinator list | tail -n +2)" -- "$cur"))
 }
 complete -F _mux_complete mux
+
+alias md="tmuxinator dotfiles"
+alias mt="tmuxinator tn4"
+alias mc="tmuxinator config"
