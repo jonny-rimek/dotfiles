@@ -7,15 +7,25 @@ at the same time, detach from the session go to a different project and switch b
 
 ## Examples
 
+The leader in tmux is ctrl s with my config, that means every tmux command, by default must be prefixed by ctrl s, unless it specifies a different key, the default leader is ctrl b
+
+### Misc
+
 ```sh 
-# leader in tmux
-# ctrl s, that means every tmux, by default must be prefixed by ctrl s, the default leader is ctrl b
-
-# detach from session 
-<leader> d 
-
 # reload config, doesn't work for certain things, sometimes you have to kill all sessions and start a new session 
 <leader> r
+
+# start a project (collection of windows in tmux)
+tmuxinator start PROJECT_NAME 
+mux PROJECT_NAME               # alias works with auto complete
+
+```
+
+### Sessions
+
+```sh 
+# detach from session 
+<leader> d 
 
 # kill session, custom keybind
 <leader> + 
@@ -24,16 +34,33 @@ at the same time, detach from the session go to a different project and switch b
 <leader> s  # from inside tmux 
 tmux ls     # from cli 
 
+```
+
+### Windows
+
+```sh
 # new window
 <leader> c
 
+```
+
+### Panes
+
+I'm not in love with panes, I mostly use windows(not the OS :D), so the shortcuts are mostly default and as a result quite awkward
+
+```sh
 # split pane, TODO: rebind to something more ergonomic
 <leader> %
 
-# close pane
-# TODO: 
+# zoom into pane, makes a pane temporarily fullscreen
+<leader> z
 
-# start a project (collection of windows in tmux)
-tmuxinator start PROJECT_NAME 
-mux PROJECT_NAME               # alias works with auto complete
+# navigate panes, TODO: bind to vim motions if i ever use panes more, i actually did but it stopped working
+<leader> arrow keys
+
+# convert pane to window
+<leader> !
+
+# close pane TODO: requires confirmation, ugh
+<leader> x
 ```
