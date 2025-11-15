@@ -46,9 +46,7 @@ stow-packages-mac.sh
   <!-- -  -->
 
 <!-- - auto open protonpass as a web app in a dedicated workspace always -->
-<!-- - save my solarized dark background image in this repo /home/jonny/.config/omarchy/themes/solarized/backgrounds-->
-  <!-- - use ai to regenerate background image with solarized light colours -->
-<!-- - put solarized themes in stow repo to symlink em -->
+<!-- - use ai to regenerate background image with solarized light colours -->
 <!-- - fix vimium j going up and vice versa map <s-j> NextTab didn''t change the behaviour (or the other one)'-->
 <!-- - sync zathora to omarchy/os theme  -->
 <!-- - veracrypt alias  -->
@@ -74,7 +72,6 @@ stow-packages-mac.sh
 <!-- - it's possible, let's use the same colour that is used for nvim to indicate current line -->
 
 <!-- TODO: hyprland -->
-<!-- - increase notification timeout and window size -->
 <!-- - shortcut for shutdown -->
 <!-- - shortcut for suspend -->
 
