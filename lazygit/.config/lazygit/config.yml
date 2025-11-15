@@ -2,3 +2,9 @@ gui:
   mainPanelSplitMode: vertical # doesn't work when the console is to narrow or the font is to big
   showFileTree: false
   screenMode: full
+
+  theme:
+    selectedLineBgColor:
+      - reverse
+    selectedRangeBgColor:
+      - reverse
