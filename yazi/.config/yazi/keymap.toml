@@ -1,8 +1,14 @@
 [[mgr.prepend_keymap]]
+on = ["<Enter>"]
+run = "noop"
+desc = "Disabled: Enter key use 'o' instead"
+
+[[mgr.prepend_keymap]]
 on = [ "?" ]
 run = "help"
 desc = "Open help menu"
 
+# vim motion bindings
 [[mgr.prepend_keymap]]
 on = [ "1" ]
 run = "plugin relative-motions 1"
