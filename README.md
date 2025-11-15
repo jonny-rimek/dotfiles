@@ -67,18 +67,30 @@ stow-packages-mac.sh
   <!-- ui.systemUsesDarkTheme → Should be unset or match your preference (0=light, 1=dark) -->
   <!-- layout.css.prefers-color-scheme.content-override → Should be 2 (system) not 0 (dark) -->
 
-<!-- TODO: lazygit  -->
-<!-- - somehow overwrite colours? diff is usually fucked, because of alacritty theme -->
-<!-- - it's possible, let's use the same colour that is used for nvim to indicate current line -->
-
-<!-- TODO: hyprland -->
-
-<!-- - switch light theme in the morning -->
-
 <!-- TODO: yazi  -->
 <!-- - shortcut to go to ~/dev directory  -->
 <!-- - unbind enter and only open with o/O -->
 <!-- - install chmod plugin and add keybinds https://kagi.com/assistant/6ff88242-d0c9-4436-adbd-8a1046f86af8 -->
+
+<!-- TODO: nvim -->
+<!-- - modularize config, so that omarchy shit stays in place and we only add new stuff via stow -->
+  <!-- - remove neotree -->
+  <!-- - remove time, lines and % from nvim theme -->
+  <!-- - neotree doesnt update git unless i close and open -->
+    <!-- - neotree don't open at the start -->
+    <!-- - use youtuber thing where it shows recent files -->
+  <!-- - fuzzy find is actually fucking dog shit dunno, ignores .files doesn't find new files? -->
+    <!-- - rebind space space to recent files in neovim / fix up file finding recent behaviour e.g. no dotfiles? recent files from other projects etc -->
+  <!-- - increase notification timeout and window size -->
+  <!-- - rebind autocomplete to tab not return-->
+  <!-- - never hide markdown code shit -->
+  <!-- - remove spellcheck -->
+  <!-- - no auto complete in .md -->
+
+<!-- - move old config into stowed files -->
+<!-- - hide tabs completely -->
+<!-- - don't start with neo tree open -->
+<!-- - fix theme breaking on every config change -->
 
 <!-- TODO: obsidian  -->
 <!-- - move plugins to stow -->
@@ -101,25 +113,9 @@ stow-packages-mac.sh
     <!-- Vimrc Support -->
     <!-- Zen -->
 
-<!-- TODO: nvim -->
-<!-- - modularize config, so that omarchy shit stays in place and we only add new stuff via stow -->
-  <!-- - remove neotree -->
-  <!-- - remove time, lines and % from nvim theme -->
-  <!-- - neotree doesnt update git unless i close and open -->
-    <!-- - neotree don't open at the start -->
-    <!-- - use youtuber thing where it shows recent files -->
-  <!-- - fuzzy find is actually fucking dog shit dunno, ignores .files doesn't find new files? -->
-    <!-- - rebind space space to recent files in neovim / fix up file finding recent behaviour e.g. no dotfiles? recent files from other projects etc -->
-  <!-- - increase notification timeout and window size -->
-  <!-- - rebind autocomplete to tab not return-->
-  <!-- - never hide markdown code shit -->
-  <!-- - remove spellcheck -->
-  <!-- - no auto complete in .md -->
-
-<!-- - move old config into stowed files -->
-<!-- - hide tabs completely -->
-<!-- - don't start with neo tree open -->
-<!-- - fix theme breaking on every config change -->
 
 <!-- TODO: LOW PRIO  -->
 <!-- - install ruby and shit via script and via mise   -->
+
+<!-- TODO: hyprland -->
+<!-- - switch light theme in the morning -->
