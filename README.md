@@ -75,6 +75,11 @@ stow-packages-mac.sh
 
 <!-- - switch light theme in the morning -->
 
+<!-- TODO: yazi  -->
+<!-- - shortcut to go to ~/dev directory  -->
+<!-- - unbind enter and only open with o/O -->
+<!-- - install chmod plugin and add keybinds https://kagi.com/assistant/6ff88242-d0c9-4436-adbd-8a1046f86af8 -->
+
 <!-- TODO: obsidian  -->
 <!-- - move plugins to stow -->
 <!-- - switch minimal theme based on os theme -->
@@ -96,13 +101,9 @@ stow-packages-mac.sh
     <!-- Vimrc Support -->
     <!-- Zen -->
 
-<!-- TODO: yazi  -->
-<!-- - shortcut to go to ~/dev directory  -->
-<!-- - unbind enter and only open with o/O -->
-<!-- - install chmod plugin and add keybinds https://kagi.com/assistant/6ff88242-d0c9-4436-adbd-8a1046f86af8 -->
-
 <!-- TODO: nvim -->
 <!-- - modularize config, so that omarchy shit stays in place and we only add new stuff via stow -->
+  <!-- - remove neotree -->
   <!-- - remove time, lines and % from nvim theme -->
   <!-- - neotree doesnt update git unless i close and open -->
     <!-- - neotree don't open at the start -->

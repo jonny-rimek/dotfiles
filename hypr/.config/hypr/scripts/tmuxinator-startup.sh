@@ -7,8 +7,8 @@
 # Sessions to start (edit this array)
 SESSIONS=(
   "dotfiles"
-  "config"
   "tn4"
+  "config"
 )
 
 PRIMARY="dotfiles"
