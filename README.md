@@ -72,10 +72,7 @@ stow-packages-mac.sh
 <!-- - it's possible, let's use the same colour that is used for nvim to indicate current line -->
 
 <!-- TODO: hyprland -->
-<!-- - shortcut for shutdown -->
-<!-- - shortcut for suspend -->
 
-<!-- - hide status bar by default or show it at the btm? -->
 <!-- - switch light theme in the morning -->
 
 <!-- TODO: obsidian  -->
