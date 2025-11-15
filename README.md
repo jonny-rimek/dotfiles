@@ -41,7 +41,8 @@ stow-packages-mac.sh
 
 <!-- - auto open obsidian in a dedicated workspace always -->
 <!-- - auto open protonpass as a web app in a dedicated workspace always -->
-<!-- - save my solarized dark background image in this repo-->
+<!-- - save my solarized dark background image in this repo -->
+  <!-- - use ai to regenerate background image with solarized light colours -->
 <!-- - put solarized themes in stow repo to symlink em -->
 <!-- - fix vimium j going up and vice versa map <s-j> NextTab didn''t change the behaviour (or the other one)'-->
 <!-- - sync zathora to omarchy/os theme  -->
