@@ -42,6 +42,7 @@ stow-packages-mac.sh
   <!-- - yazi -->
   <!-- - nvim -->
   <!-- - lazygit -->
+  <!-- - obsidian -->
   <!-- -  -->
 
 <!-- - auto open protonpass as a web app in a dedicated workspace always -->
@@ -73,12 +74,10 @@ stow-packages-mac.sh
 <!-- - it's possible, let's use the same colour that is used for nvim to indicate current line -->
 
 <!-- TODO: hyprland -->
-<!-- - rebind super tab to switch to latest workspace instead of next, currently this is ctrl super tab -->
 <!-- - increase notification timeout and window size -->
 <!-- - shortcut for shutdown -->
 <!-- - shortcut for suspend -->
 
-<!-- - -->
 <!-- - hide status bar by default or show it at the btm? -->
 <!-- - switch light theme in the morning -->
 
