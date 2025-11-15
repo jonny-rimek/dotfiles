@@ -80,8 +80,9 @@ stow-packages-mac.sh
 
 <!-- TODO: obsidian  -->
 <!-- - move plugins to stow -->
-<!-- - update font to same as omarchy -->
 <!-- - switch minimal theme based on os theme -->
+
+<!-- - update font to same as omarchy -->
 <!-- - install community plugins, via config files if possible -->
     <!-- Advanced Tables -->
     <!-- Automatic Table Of Contents -->
