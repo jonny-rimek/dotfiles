@@ -22,6 +22,12 @@ stow --verbose --simulate --target=$HOME TOOLNAME
 stow --verbose --target=$HOME TOOLNAME
 ```
 
+## Manual steps after successful install
+
+- proton login 
+- firefox login
+- obsidian login 
+- kagi default search engine kagi default seach engine https://help.kagi.com/kagi/getting-started/setting-default/firefox-desktop.html
 
 ## Setup for mac
 
@@ -37,34 +43,64 @@ stow-packages-mac.sh
   <!-- - nvim -->
   <!-- - lazygit -->
   <!-- -  -->
-<!-- - manual setup steps in signal document them here or automate -->
 
-<!-- - auto open obsidian in a dedicated workspace always -->
 <!-- - auto open protonpass as a web app in a dedicated workspace always -->
-<!-- - save my solarized dark background image in this repo -->
+<!-- - save my solarized dark background image in this repo /home/jonny/.config/omarchy/themes/solarized/backgrounds-->
   <!-- - use ai to regenerate background image with solarized light colours -->
 <!-- - put solarized themes in stow repo to symlink em -->
 <!-- - fix vimium j going up and vice versa map <s-j> NextTab didn''t change the behaviour (or the other one)'-->
 <!-- - sync zathora to omarchy/os theme  -->
 <!-- - veracrypt alias  -->
+  <!-- sudo mkdir -p /mnt/veracrypt1 -->
+  <!-- veracrypt /run/media/jonny/Elements/p2 /mnt/veracrypt1 -->
+  <!-- cd /mnt/veracrypt1 -->
+  <!-- nautilus . -->
 <!-- - import old dotfiles  -->
 <!-- - integrate stow as a last step and do steps to clean up potentially existing config, only ask for confirmation if there are planned changes -->
 <!-- - remove all other themes or not, not sure its a good idea probably gonna break shit-->
+<!-- - download all repos to ~/dev if they don't exist yet -->
+<!-- - install solarized themes https://github.com/Gazler/omarchy-solarized-theme and light via cli -->
+<!-- - remap ctrl a to super a -->
+<!-- - proton drive? -->
+<!-- firefox -->
+  <!-- https://kagi.com/assistant/d07a235a-8b08-4aaa-9cfb-8299e8c4beb4 -->
+  <!-- widget.content.gtk-theme-override → Should be empty (not set) -->
+  <!-- ui.systemUsesDarkTheme → Should be unset or match your preference (0=light, 1=dark) -->
+  <!-- layout.css.prefers-color-scheme.content-override → Should be 2 (system) not 0 (dark) -->
 
 <!-- TODO: lazygit  -->
 <!-- - somehow overwrite colours? diff is usually fucked, because of alacritty theme -->
 <!-- - it's possible, let's use the same colour that is used for nvim to indicate current line -->
 
 <!-- TODO: hyprland -->
-<!-- - start every window in fullscreen or smth -->
-<!-- - hide status bar by default -->
 <!-- - rebind super tab to switch to latest workspace instead of next, currently this is ctrl super tab -->
 <!-- - increase notification timeout and window size -->
 <!-- - shortcut for shutdown -->
 <!-- - shortcut for suspend -->
 
 <!-- - -->
+<!-- - hide status bar by default or show it at the btm? -->
 <!-- - switch light theme in the morning -->
+
+<!-- TODO: obsidian  -->
+<!-- - move plugins to stow -->
+<!-- - update font to same as omarchy -->
+<!-- - switch minimal theme based on os theme -->
+<!-- - install community plugins, via config files if possible -->
+    <!-- Advanced Tables -->
+    <!-- Automatic Table Of Contents -->
+    <!-- Better Command Palette -->
+    <!-- BRAT -->
+    <!-- Checkbox Reorder -->
+    <!-- Improved VimCursor -->
+    <!-- Lazy Plugin Loader -->
+    <!-- Mini Vimrc -->
+    <!-- Remember cursor position -->
+    <!-- Style Settings -->
+    <!-- Update time on edit -->
+    <!-- Vimium -->
+    <!-- Vimrc Support -->
+    <!-- Zen -->
 
 <!-- TODO: yazi  -->
 <!-- - shortcut to go to ~/dev directory  -->
@@ -75,6 +111,8 @@ stow-packages-mac.sh
 <!-- - modularize config, so that omarchy shit stays in place and we only add new stuff via stow -->
   <!-- - remove time, lines and % from nvim theme -->
   <!-- - neotree doesnt update git unless i close and open -->
+    <!-- - neotree don't open at the start -->
+    <!-- - use youtuber thing where it shows recent files -->
   <!-- - fuzzy find is actually fucking dog shit dunno, ignores .files doesn't find new files? -->
     <!-- - rebind space space to recent files in neovim / fix up file finding recent behaviour e.g. no dotfiles? recent files from other projects etc -->
   <!-- - increase notification timeout and window size -->
