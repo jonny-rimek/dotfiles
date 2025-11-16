@@ -36,7 +36,6 @@ install-packages-mac.sh
 stow-packages-mac.sh
 ```
 
-
 <!-- TODO: misc -->
 <!-- - create cheatsheet -->
   <!-- - yazi -->

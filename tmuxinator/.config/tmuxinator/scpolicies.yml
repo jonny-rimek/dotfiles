@@ -6,7 +6,7 @@ root: ~/dev/infra.terraform.policies
 windows:
   - editor:
       panes:
-        - while true; do nvim .; done
+        - while true; do nvim; done
   - console:
   - git:
       panes:
