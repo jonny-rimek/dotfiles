@@ -45,11 +45,10 @@ stow-packages-mac.sh
   <!-- - obsidian -->
   <!-- -  -->
 
-
 <!-- TODO: nvim -->
-<!-- - remove time, lines and % from nvim theme -->
 <!-- - use youtuber thing where it shows recent files -->
 <!-- - increase notification timeout and window size -->
+<!-- - yazi addon -->
 <!-- - rebind autocomplete to tab not return-->
 <!-- - never hide markdown code shit -->
 <!-- - remove spellcheck -->
