@@ -4,10 +4,7 @@ name: config
 root: ~/.config
 
 windows:
-  - editor:
-      panes:
-        - while true; do nvim .; done
-  - console:
   - yazi:
       panes:
         - while true; do yazi; done
+  - console:

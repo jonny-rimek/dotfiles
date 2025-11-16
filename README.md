@@ -45,6 +45,44 @@ stow-packages-mac.sh
   <!-- - obsidian -->
   <!-- -  -->
 
+
+<!-- TODO: nvim -->
+<!-- - remove time, lines and % from nvim theme -->
+<!-- - use youtuber thing where it shows recent files -->
+<!-- - increase notification timeout and window size -->
+<!-- - rebind autocomplete to tab not return-->
+<!-- - never hide markdown code shit -->
+<!-- - remove spellcheck -->
+<!-- - no auto complete in .md -->
+
+<!-- - move old config into stowed files -->
+<!-- - hide tabs completely -->
+<!-- - don't start with neo tree open -->
+<!-- - fix theme breaking on every config change -->
+
+<!-- TODO: obsidian  -->
+<!-- - move plugins to stow -->
+<!-- - switch minimal theme based on os theme -->
+
+<!-- - update font to same as omarchy -->
+<!-- - install community plugins, via config files if possible -->
+  <!-- Advanced Tables -->
+  <!-- Automatic Table Of Contents -->
+  <!-- Better Command Palette -->
+  <!-- BRAT -->
+  <!-- Checkbox Reorder -->
+  <!-- Improved VimCursor -->
+  <!-- Lazy Plugin Loader -->
+  <!-- Mini Vimrc -->
+  <!-- Remember cursor position -->
+  <!-- Style Settings -->
+  <!-- Update time on edit -->
+  <!-- Vimium -->
+  <!-- Vimrc Support -->
+  <!-- Zen -->
+
+
+<!-- TODO: LOW PRIO  -->
 <!-- - auto open protonpass as a web app in a dedicated workspace always -->
 <!-- - use ai to regenerate background image with solarized light colours -->
 <!-- - fix vimium j going up and vice versa map <s-j> NextTab didn''t change the behaviour (or the other one)'-->
@@ -67,52 +105,9 @@ stow-packages-mac.sh
   <!-- ui.systemUsesDarkTheme → Should be unset or match your preference (0=light, 1=dark) -->
   <!-- layout.css.prefers-color-scheme.content-override → Should be 2 (system) not 0 (dark) -->
 
-<!-- TODO: yazi  -->
-
-<!-- TODO: nvim -->
-<!-- - modularize config, so that omarchy shit stays in place and we only add new stuff via stow -->
-  <!-- - remove neotree -->
-  <!-- - remove time, lines and % from nvim theme -->
-  <!-- - neotree doesnt update git unless i close and open -->
-    <!-- - neotree don't open at the start -->
-    <!-- - use youtuber thing where it shows recent files -->
-  <!-- - fuzzy find is actually fucking dog shit dunno, ignores .files doesn't find new files? -->
-    <!-- - rebind space space to recent files in neovim / fix up file finding recent behaviour e.g. no dotfiles? recent files from other projects etc -->
-  <!-- - increase notification timeout and window size -->
-  <!-- - rebind autocomplete to tab not return-->
-  <!-- - never hide markdown code shit -->
-  <!-- - remove spellcheck -->
-  <!-- - no auto complete in .md -->
-
-<!-- - move old config into stowed files -->
-<!-- - hide tabs completely -->
-<!-- - don't start with neo tree open -->
-<!-- - fix theme breaking on every config change -->
-
-<!-- TODO: obsidian  -->
-<!-- - move plugins to stow -->
-<!-- - switch minimal theme based on os theme -->
-
-<!-- - update font to same as omarchy -->
-<!-- - install community plugins, via config files if possible -->
-    <!-- Advanced Tables -->
-    <!-- Automatic Table Of Contents -->
-    <!-- Better Command Palette -->
-    <!-- BRAT -->
-    <!-- Checkbox Reorder -->
-    <!-- Improved VimCursor -->
-    <!-- Lazy Plugin Loader -->
-    <!-- Mini Vimrc -->
-    <!-- Remember cursor position -->
-    <!-- Style Settings -->
-    <!-- Update time on edit -->
-    <!-- Vimium -->
-    <!-- Vimrc Support -->
-    <!-- Zen -->
-
-
-<!-- TODO: LOW PRIO  -->
 <!-- - install ruby and shit via script and via mise   -->
+
+<!-- TODO: yazi  -->
 
 <!-- TODO: hyprland -->
 <!-- - switch light theme in the morning -->
