@@ -4,3 +4,5 @@ require("relative-motions"):setup({
 	show_motion = true, -- Show motion in status bar
 	only_motions = false, -- Allow delete/cut/yank commands
 })
+
+require("easyjump"):setup()

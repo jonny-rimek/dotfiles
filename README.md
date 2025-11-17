@@ -45,17 +45,13 @@ stow-packages-mac.sh
   <!-- -  -->
 
 <!-- TODO: nvim -->
-<!-- - use youtuber thing where it shows recent files -->
 <!-- - increase notification timeout and window size -->
-<!-- - yazi addon -->
 <!-- - rebind autocomplete to tab not return-->
 <!-- - never hide markdown code shit -->
 <!-- - remove spellcheck -->
 <!-- - no auto complete in .md -->
 
-<!-- - move old config into stowed files -->
 <!-- - hide tabs completely -->
-<!-- - don't start with neo tree open -->
 <!-- - fix theme breaking on every config change -->
 
 <!-- TODO: obsidian  -->
