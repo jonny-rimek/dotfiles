@@ -1,91 +1,37 @@
-[[mgr.prepend_keymap]]
-on   = [ "i" ]
-run  = "plugin easyjump"
-desc = "easyjump"
+[mgr]
+prepend_keymap = [
+  # Neovim-style search and filter
+  { on = [ "/" ], run = "filter", desc = "Filter files" },
+  { on = [ "f" ], run = "search fd", desc = "Search files by name (fd)" },
+  { on = [ "F" ], run = "search rg", desc = "Search files by content (ripgrep)" },
 
-[[mgr.prepend_keymap]]
-on = [ "c", "x" ]
-run = 'shell "chmod +x $@" --confirm'
-desc = "Make executable"
+  # Easyjump navigation
+  { on = [ "s" ], run = "plugin easyjump", desc = "Easyjump navigation" },
 
-[[mgr.prepend_keymap]]
-on = [ "c", "6" ]
-run = 'shell "chmod 644 $@" --confirm'
-desc = "Set permissions to 644"
+  # Chmod operations
+  { on = [ "c", "x" ], run = 'shell "chmod +x $@" --confirm', desc = "Make executable" },
+  { on = [ "c", "6" ], run = 'shell "chmod 644 $@" --confirm', desc = "Set permissions to 644" },
+  { on = [ "c", "7" ], run = 'shell "chmod 755 $@" --confirm', desc = "Set permissions to 755" },
+  { on = [ "c", "m" ], run = "plugin chmod", desc = "Change file permissions" },
 
-[[mgr.prepend_keymap]]
-on = [ "c", "7" ]
-run = 'shell "chmod 755 $@" --confirm'
-desc = "Set permissions to 755"
+  # Directory shortcuts
+  { on = [ "g", "d" ], run = "cd ~/dev", desc = "Go to ~/dev" },
+  { on = [ "g", "D" ], run = "cd ~/Downloads", desc = "Go to ~/Downloads" },
 
-[[mgr.prepend_keymap]]
-on = [ "c", "m" ]
-run = "plugin chmod"
-desc = "Change file permissions"
+  # Disabled keybindings
+  { on = [ "<Enter>" ], run = "noop", desc = "Disabled: Enter key use 'o' instead" },
 
-[[mgr.prepend_keymap]]
-on = ["g", "d"]
-run = "cd ~/dev"
-desc = "Go to ~/dev"
+  # Help
+  { on = [ "?" ], run = "help", desc = "Open help menu" },
 
-[[mgr.prepend_keymap]]
-on = ["g", "D"]
-run = "cd ~/Downloads"
-desc = "Go to ~/Downloads"
-
-[[mgr.prepend_keymap]]
-on = ["<Enter>"]
-run = "noop"
-desc = "Disabled: Enter key use 'o' instead"
-
-[[mgr.prepend_keymap]]
-on = [ "?" ]
-run = "help"
-desc = "Open help menu"
-
-# vim motion bindings
-[[mgr.prepend_keymap]]
-on = [ "1" ]
-run = "plugin relative-motions 1"
-desc = "Move in relative steps"
-
-[[mgr.prepend_keymap]]
-on = [ "2" ]
-run = "plugin relative-motions 2"
-desc = "Move in relative steps"
-
-[[mgr.prepend_keymap]]
-on = [ "3" ]
-run = "plugin relative-motions 3"
-desc = "Move in relative steps"
-
-[[mgr.prepend_keymap]]
-on = [ "4" ]
-run = "plugin relative-motions 4"
-desc = "Move in relative steps"
-
-[[mgr.prepend_keymap]]
-on = [ "5" ]
-run = "plugin relative-motions 5"
-desc = "Move in relative steps"
-
-[[mgr.prepend_keymap]]
-on = [ "6" ]
-run = "plugin relative-motions 6"
-desc = "Move in relative steps"
-
-[[mgr.prepend_keymap]]
-on = [ "7" ]
-run = "plugin relative-motions 7"
-desc = "Move in relative steps"
-
-[[mgr.prepend_keymap]]
-on = [ "8" ]
-run = "plugin relative-motions 8"
-desc = "Move in relative steps"
-
-[[mgr.prepend_keymap]]
-on = [ "9" ]
-run = "plugin relative-motions 9"
-desc = "Move in relative steps"
-
+  # Vim relative motions
+  { on = [ "1" ], run = "plugin relative-motions 1", desc = "Move in relative steps" },
+  { on = [ "2" ], run = "plugin relative-motions 2", desc = "Move in relative steps" },
+  { on = [ "3" ], run = "plugin relative-motions 3", desc = "Move in relative steps" },
+  { on = [ "4" ], run = "plugin relative-motions 4", desc = "Move in relative steps" },
+  { on = [ "5" ], run = "plugin relative-motions 5", desc = "Move in relative steps" },
+  { on = [ "6" ], run = "plugin relative-motions 6", desc = "Move in relative steps" },
+  { on = [ "7" ], run = "plugin relative-motions 7", desc = "Move in relative steps" },
+  { on = [ "8" ], run = "plugin relative-motions 8", desc = "Move in relative steps" },
+  { on = [ "9" ], run = "plugin relative-motions 9", desc = "Move in relative steps" },
+]
