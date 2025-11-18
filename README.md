@@ -45,11 +45,15 @@ stow-packages-mac.sh
   <!-- -  -->
 
 <!-- TODO: nvim -->
-<!-- - increase notification timeout and window size -->
 <!-- - rebind autocomplete to tab not return-->
 <!-- - never hide markdown code shit -->
 <!-- - remove spellcheck -->
 <!-- - no auto complete in .md -->
+<!-- - remove shitty rendering of spaces sometimes -->
+<!-- - remove leader gg -->
+<!-- - rework test keybinds to leader t + to avoid conflicts -->
+<!-- -  -->
+<!-- -  -->
 
 <!-- - hide tabs completely -->
 <!-- - fix theme breaking on every config change -->
