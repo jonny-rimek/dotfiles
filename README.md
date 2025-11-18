@@ -42,10 +42,10 @@ stow-packages-mac.sh
   <!-- - nvim -->
   <!-- - lazygit -->
   <!-- - obsidian -->
-  <!-- -  -->
+<!-- - switch to zsh  -->
+<!-- - import old dotfiles, but only the aliases i actually need  -->
 
 <!-- TODO: nvim -->
-<!-- - rebind autocomplete to tab not return-->
 <!-- - never hide markdown code shit -->
 <!-- - remove spellcheck -->
 <!-- - no auto complete in .md -->
@@ -90,7 +90,6 @@ stow-packages-mac.sh
   <!-- veracrypt /run/media/jonny/Elements/p2 /mnt/veracrypt1 -->
   <!-- cd /mnt/veracrypt1 -->
   <!-- nautilus . -->
-<!-- - import old dotfiles  -->
 <!-- - integrate stow as a last step and do steps to clean up potentially existing config, only ask for confirmation if there are planned changes -->
 <!-- - remove all other themes or not, not sure its a good idea probably gonna break shit-->
 <!-- - download all repos to ~/dev if they don't exist yet -->
