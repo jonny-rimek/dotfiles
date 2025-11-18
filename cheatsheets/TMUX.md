@@ -24,7 +24,13 @@ mux PROJECT_NAME               # alias works with auto complete
 ### Sessions
 
 ```sh 
-# detach from session 
+# new session
+<leader> :new # new session with default name, some number that is incremented
+<leader> :new-session -s NAME # specify a  name 
+tmux # must not be in a tmux session, from the cli simply typing tmux will start a new session with a number 
+tmux new-session -s NAME # same as from within a tmux session
+
+# detach from session
 <leader> d 
 
 # kill session, custom keybind
