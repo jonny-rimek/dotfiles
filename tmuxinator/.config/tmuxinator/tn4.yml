@@ -11,9 +11,6 @@ windows:
   - git:
       panes:
         - while true; do lazygit; done
-  - yazi:
-      panes:
-        - while true; do yazi; done
   - console:
       panes:
         - while true; do bin/rails console; done

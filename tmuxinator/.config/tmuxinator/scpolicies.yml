@@ -11,6 +11,3 @@ windows:
   - git:
       panes:
         - while true; do lazygit; done
-  - yazi:
-      panes:
-        - while true; do yazi; done

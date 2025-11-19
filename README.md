@@ -47,7 +47,6 @@ stow-packages-mac.sh
 <!-- - proton vpn -->
 
 <!-- TODO: nvim -->
-<!-- - remove leader gg -->
 <!-- - look back into test stuff that typcraft did so that it opened in another tmux pane, but make it split vertically 50/50-->
 
 <!-- - hide tabs completely -->
