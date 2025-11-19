@@ -13,6 +13,10 @@ vim.keymap.set("n", "L", "<nop>", { noremap = true, silent = true })
 vim.keymap.set("n", "J", "<nop>", { noremap = true, silent = true })
 vim.keymap.set("n", "K", "<nop>", { noremap = true, silent = true })
 
--- Map J/K for BUFFER navigation (what you actually want)
+-- Map J/K for BUFFER navigation
 vim.keymap.set("n", "J", ":bprevious<CR>", { noremap = true, silent = true, desc = "Previous buffer" })
 vim.keymap.set("n", "K", ":bnext<CR>", { noremap = true, silent = true, desc = "Next buffer" })
+
+-- Unbind LazyVim's default lazygit keymaps
+vim.keymap.del("n", "<leader>gg")
+vim.keymap.del("n", "<leader>gG")
