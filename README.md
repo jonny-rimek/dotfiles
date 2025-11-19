@@ -44,16 +44,11 @@ stow-packages-mac.sh
   <!-- - obsidian -->
 <!-- - switch to zsh  -->
 <!-- - import old dotfiles, but only the aliases i actually need  -->
+<!-- - proton vpn -->
 
 <!-- TODO: nvim -->
-<!-- - never hide markdown code shit -->
-<!-- - remove spellcheck -->
-<!-- - no auto complete in .md -->
-<!-- - remove shitty rendering of spaces sometimes -->
 <!-- - remove leader gg -->
 <!-- - rework test keybinds to leader t + to avoid conflicts -->
-<!-- -  -->
-<!-- -  -->
 
 <!-- - hide tabs completely -->
 <!-- - fix theme breaking on every config change -->
