@@ -6,6 +6,9 @@ vim.opt.relativenumber = true
 -- Disable spell checking globally
 vim.opt.spell = false
 
+-- Disable whitespace character rendering
+vim.opt.list = false
+
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "markdown",
 	callback = function()

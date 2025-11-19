@@ -24,9 +24,9 @@ stow --verbose --target=$HOME TOOLNAME
 
 ## Manual steps after successful install
 
-- proton login 
-- firefox login
-- obsidian login 
+- proton login
+- firefox login 
+- obsidian login
 - kagi default search engine kagi default seach engine https://help.kagi.com/kagi/getting-started/setting-default/firefox-desktop.html
 
 ## Setup for mac
