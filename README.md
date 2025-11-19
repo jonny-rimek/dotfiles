@@ -48,7 +48,7 @@ stow-packages-mac.sh
 
 <!-- TODO: nvim -->
 <!-- - remove leader gg -->
-<!-- - rework test keybinds to leader t + to avoid conflicts -->
+<!-- - look back into test stuff that typcraft did so that it opened in another tmux pane, but make it split vertically 50/50-->
 
 <!-- - hide tabs completely -->
 <!-- - fix theme breaking on every config change -->

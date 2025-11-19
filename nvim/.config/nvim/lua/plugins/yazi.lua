@@ -18,5 +18,7 @@ return {
 		keymaps = {
 			show_help = "?",
 		},
+		floating_window_scaling_factor = 1.0, -- 100% size
+		yazi_floating_window_border = "none", -- Remove borders
 	},
 }
