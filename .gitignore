@@ -7,3 +7,5 @@ yazi/.config/yazi/*
 !yazi/.config/yazi/theme.toml
 !yazi/.config/yazi/init.lua
 !yazi/.config/yazi/package.toml
+
+tmuxinator/.config/tmuxinator/sc-*

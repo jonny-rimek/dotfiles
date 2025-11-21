@@ -1,0 +1,8 @@
+name: rspec-book
+root: ~/dev/rspec-book
+
+windows:
+  - editor:
+      panes:
+        - while true; do nvim; done
+  - console:
