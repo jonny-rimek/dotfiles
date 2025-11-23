@@ -1,5 +1,16 @@
 [mgr]
 prepend_keymap = [
+
+  # Go to previous directory
+  { on = [ "g", "-" ], run = "back", desc = "Go back to previous directory" },
+
+  # Go to git root of project
+  { on = [ "g", "r" ], run = 'shell -- ya emit cd "$(git rev-parse --show-toplevel)"' },
+
+  # Directory shortcuts
+  { on = [ "g", "d" ], run = "cd ~/dev", desc = "Go to ~/dev" },
+  { on = [ "g", "D" ], run = "cd ~/Downloads", desc = "Go to ~/Downloads" },
+
   # Neovim-style search and filter
   { on = [ "/" ], run = "filter", desc = "Filter files" },
   { on = [ "f" ], run = "search fd", desc = "Search files by name (fd)" },
@@ -13,10 +24,6 @@ prepend_keymap = [
   { on = [ "c", "6" ], run = 'shell "chmod 644 $@" --confirm', desc = "Set permissions to 644" },
   { on = [ "c", "7" ], run = 'shell "chmod 755 $@" --confirm', desc = "Set permissions to 755" },
   { on = [ "c", "m" ], run = "plugin chmod", desc = "Change file permissions" },
-
-  # Directory shortcuts
-  { on = [ "g", "d" ], run = "cd ~/dev", desc = "Go to ~/dev" },
-  { on = [ "g", "D" ], run = "cd ~/Downloads", desc = "Go to ~/Downloads" },
 
   # Disabled keybindings
   { on = [ "<Enter>" ], run = "noop", desc = "Disabled: Enter key use 'o' instead" },
