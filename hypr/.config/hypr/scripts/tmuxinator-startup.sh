@@ -9,6 +9,7 @@ SESSIONS=(
   "dotfiles"
   "tn4"
   "config"
+  "rspec-book"
 )
 
 PRIMARY="dotfiles"
