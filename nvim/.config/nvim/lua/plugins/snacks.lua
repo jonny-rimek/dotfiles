@@ -20,7 +20,7 @@ return {
 		{
 			"<leader><space>",
 			function()
-				require("snacks").picker.smart()
+				require("snacks").picker.recent()
 			end,
 			desc = "Smart Files (Frecency)",
 		},
