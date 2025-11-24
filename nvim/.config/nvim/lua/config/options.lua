@@ -9,9 +9,12 @@ vim.opt.spell = false
 -- Disable whitespace character rendering
 vim.opt.list = false
 
+-- Disable concealing markdown e.g. ```
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "markdown",
 	callback = function()
 		vim.opt_local.conceallevel = 0
 	end,
 })
+
+vim.opt.swapfile = false
