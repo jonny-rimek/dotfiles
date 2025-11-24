@@ -22,4 +22,4 @@ vim.keymap.del("n", "<leader>gg")
 vim.keymap.del("n", "<leader>gG")
 
 -- Save all buffers
-vim.keymap.set("n", "<leader>ss", "<cmd>wa<cr>", { desc = "Save all buffers" })
+vim.keymap.set("n", "<leader>a", "<cmd>wa<cr>", { desc = "Save all buffers" })
