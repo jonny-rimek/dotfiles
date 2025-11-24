@@ -26,7 +26,7 @@ prepend_keymap = [
   { on = [ "c", "m" ], run = "plugin chmod", desc = "Change file permissions" },
 
   # Disabled keybindings
-  { on = [ "<Enter>" ], run = "noop", desc = "Disabled: Enter key use 'o' instead" },
+  # { on = [ "<Enter>" ], run = "noop", desc = "Disabled: Enter key use 'o' instead" },
 
   # Help
   { on = [ "?" ], run = "help", desc = "Open help menu" },
