@@ -3,6 +3,9 @@ root: ~/dev/rspec-book
 
 windows:
   - editor:
+      layout: main-vertical
+      main-pane-width: 60
       panes:
         - while true; do nvim; done
+        - cd chapter4 && bundle exec guard --clear --no-notify
   - console:
