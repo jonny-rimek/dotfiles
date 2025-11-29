@@ -1,23 +1,25 @@
-return {
-	"vim-test/vim-test",
-	dependencies = {
-		"preservim/vimux",
-	},
-	keys = {
-		{ "<CR>", "<cmd>TestFile<CR>", desc = "Test file", silent = true },
-		{ "<leader>tt", "<cmd>TestFile<CR>", desc = "Test file", silent = true },
-		{ "<leader>ta", "<cmd>TestSuite<CR>", desc = "Test suite", silent = true },
-		{ "<leader>tl", "<cmd>TestLast<CR>", desc = "Test last", silent = true },
-		{ "<leader>tg", "<cmd>TestVisit<CR>", desc = "Test visit", silent = true },
-	},
-	config = function()
-		-- Use vimux to display test results (in a new tmux pane)
-		vim.cmd("let test#strategy = 'vimux'")
-
-		-- Configure RSpec output format
-		vim.g["test#ruby#rspec#options"] = "--format documentation"
-
-		-- Configure vimux to use vertical split (50/50)
-		vim.g.VimuxOpenExtraArgs = "-h -p 50"
-	end,
-}
+return {}
+-- just use guard lol
+-- return {
+-- 	"vim-test/vim-test",
+-- 	dependencies = {
+-- 		"preservim/vimux",
+-- 	},
+-- 	keys = {
+-- 		{ "<CR>", "<cmd>TestFile<CR>", desc = "Test file", silent = true },
+-- 		{ "<leader>tt", "<cmd>TestFile<CR>", desc = "Test file", silent = true },
+-- 		{ "<leader>ta", "<cmd>TestSuite<CR>", desc = "Test suite", silent = true },
+-- 		{ "<leader>tl", "<cmd>TestLast<CR>", desc = "Test last", silent = true },
+-- 		{ "<leader>tg", "<cmd>TestVisit<CR>", desc = "Test visit", silent = true },
+-- 	},
+-- 	config = function()
+-- 		-- Use vimux to display test results (in a new tmux pane)
+-- 		vim.cmd("let test#strategy = 'vimux'")
+--
+-- 		-- Configure RSpec output format
+-- 		vim.g["test#ruby#rspec#options"] = "--format documentation"
+--
+-- 		-- Configure vimux to use vertical split (50/50)
+-- 		vim.g.VimuxOpenExtraArgs = "-h -p 50"
+-- 	end,
+-- }
