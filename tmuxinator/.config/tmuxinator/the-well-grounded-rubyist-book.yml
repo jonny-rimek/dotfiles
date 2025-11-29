@@ -1,0 +1,16 @@
+
+name: the-well-grounded-rubyist-book
+root: ~/dev/the-well-grounded-rubyist
+
+windows:
+  - editor:
+      layout: main-vertical
+      main-pane-width: 70
+      panes:
+        - editor:
+          -  while true; do nvim; done
+        - console:
+  - irb:
+      panes:
+        -  while true; do irb; done
+  - console:
