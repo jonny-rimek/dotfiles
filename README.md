@@ -43,6 +43,7 @@ stow-packages-mac.sh
   <!-- - lazygit -->
   <!-- - obsidian -->
 <!-- - switch to zsh  -->
+<!-- - alias for tmux attach  -->
 <!-- - import old dotfiles, but only the aliases i actually need  -->
 <!-- - proton vpn -->
 
@@ -99,6 +100,7 @@ stow-packages-mac.sh
 <!-- - install ruby and shit via script and via mise   -->
 
 <!-- TODO: yazi  -->
+<!-- - https://yazi-rs.github.io/docs/tips/#system-chooser -->
 
 <!-- TODO: hyprland -->
 <!-- - switch light theme in the morning -->
