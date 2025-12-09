@@ -19,6 +19,12 @@ The leader in tmux is ctrl s with my config, that means every tmux command, by d
 tmuxinator start PROJECT_NAME 
 mux PROJECT_NAME               # alias works with auto complete
 
+<leader> [ # enter copy mode, it's the same as vim normal mode
+
+Navigation:      j/k (down/up), h/l (left/right), Ctrl-u/d (page up/down)
+Search:          / (forward), ? (backward), n/N (next/prev match)
+Selection:       Space or v (start selection), y (yank)
+Exit:            q, Enter, or Escape
 ```
 
 ### Sessions
