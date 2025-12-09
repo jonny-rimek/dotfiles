@@ -44,8 +44,10 @@ stow-packages-mac.sh
   <!-- - obsidian -->
 <!-- - switch to zsh  -->
 <!-- - alias for tmux attach  -->
+<!-- - alias for shutdown pc -->
 <!-- - import old dotfiles, but only the aliases i actually need  -->
 <!-- - proton vpn -->
+<!-- - tmux alt tab to switch to last window -->
 
 <!-- TODO: nvim -->
 <!-- - look back into test stuff that typcraft did so that it opened in another tmux pane, but make it split vertically 50/50-->

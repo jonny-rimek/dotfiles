@@ -1,0 +1,80 @@
+-- Only LSP completions, no keywords, no snippets, no buffer text, nothing
+--
+-- return {
+--   -- Kill snippet plugins entirely
+--   { "rafamadriz/friendly-snippets", enabled = false },
+--   { "garymjr/nvim-snippets", enabled = false },
+--   { "L3MON4D3/LuaSnip", enabled = false },
+--
+--   -- Configure blink.cmp to be extremely hostile to non-LSP sources
+--   {
+--     "saghen/blink.cmp",
+--     opts = function(_, opts)
+--       -- Only enable LSP source, nothing else
+--       opts.sources = {
+--         default = { "lsp" },
+--         providers = {
+--           lsp = {
+--             name = "lsp",
+--             enabled = true,
+--             module = "blink.cmp.sources.lsp",
+--           },
+--           -- Explicitly disable everything else
+--           snippets = { enabled = false },
+--           path = { enabled = false },
+--           buffer = { enabled = false },
+--         },
+--       }
+--
+--       -- Disable snippet expansion completely
+--       opts.snippets = {
+--         expand = function() end,
+--         active = function() return false end,
+--         jump = { next = false, prev = false },
+--       }
+--
+--       -- CRITICAL: Filter out non-LSP completion kinds
+--       opts.sources.transform_items = function(_, items)
+--         return vim.tbl_filter(function(item)
+--           local kind = item.kind
+--           local CompletionItemKind = require('blink.cmp.types').CompletionItemKind
+--
+--           -- ONLY allow these LSP kinds:
+--           local allowed_kinds = {
+--             CompletionItemKind.Method,
+--             CompletionItemKind.Function,
+--             CompletionItemKind.Constructor,
+--             CompletionItemKind.Field,
+--             CompletionItemKind.Variable,
+--             CompletionItemKind.Class,
+--             CompletionItemKind.Interface,
+--             CompletionItemKind.Module,
+--             CompletionItemKind.Property,
+--             CompletionItemKind.Unit,
+--             CompletionItemKind.Value,
+--             CompletionItemKind.Enum,
+--             CompletionItemKind.Constant,
+--             CompletionItemKind.Struct,
+--             CompletionItemKind.Event,
+--             CompletionItemKind.Operator,
+--             CompletionItemKind.TypeParameter,
+--           }
+--
+--           -- Block these specifically:
+--           -- CompletionItemKind.Text (buffer words)
+--           -- CompletionItemKind.Snippet (snippets)
+--           -- CompletionItemKind.Keyword (language keywords like 'def')
+--
+--           for _, allowed in ipairs(allowed_kinds) do
+--             if kind == allowed then
+--               return true
+--             end
+--           end
+--           return false
+--         end, items)
+--       end
+--
+--       return opts
+--     end,
+--   },
+-- }

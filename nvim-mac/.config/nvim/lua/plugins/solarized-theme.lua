@@ -9,7 +9,7 @@ return {
     styles = {
       constants = { bold = true },
     },
-  },
+  ,
   config = function(_, opts)
     vim.o.termguicolors = true
     vim.o.background = "dark"
