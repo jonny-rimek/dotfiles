@@ -5,15 +5,24 @@ root: ~/dev/tn4
 
 windows:
   - editor:
+      layout: main-vertical
+      main-pane-width: 70
       panes:
         -  while true; do nvim; done
+        -  while true; do bundle exec guard -G guardfile.minimal.rb --clear --no-notify; done
+  - tests:
+      panes:
+        -  while true; do bundle exec guard --clear --no-notify; done
+  - rails console:
+      panes:
+        -  while true; do bin/rails console; done
   - shell:
   - git:
       panes:
         -  while true; do lazygit; done
-  - console:
-      panes:
-        -  while true; do bin/rails console; done
   - server:
       panes:
         -  while true; do bin/rails server; done
+  - llm:
+      panes:
+        -  while true; do claude; done

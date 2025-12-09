@@ -5,7 +5,10 @@ windows:
   - editor:
       panes:
         -  while true; do nvim; done
-  - console:
+  - shell:
   - git:
       panes:
         -  while true; do lazygit; done
+  - llm:
+      panes:
+        -  while true; do claude; done
