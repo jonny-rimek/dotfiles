@@ -14,3 +14,5 @@ alias md="tmuxinator dotfiles"
 alias mt="tmuxinator tn4"
 alias mc="tmuxinator config"
 alias md="tmuxinator rspec-book"
+
+alias ta="tmux attach"
