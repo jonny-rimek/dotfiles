@@ -43,11 +43,19 @@ stow-packages-mac.sh
   <!-- - lazygit -->
   <!-- - obsidian -->
 <!-- - switch to zsh  -->
+<!-- - make hyprrland background fully opaque -->
+<!-- - mpv always fullscreen  -->
+<!-- - refactor solarized to work with new colour setup in omarchy -->
 <!-- - alias for tmux attach  -->
 <!-- - alias for shutdown pc -->
 <!-- - import old dotfiles, but only the aliases i actually need  -->
 <!-- - nvim 0, jump to first char, not start of the line -->
 <!-- - if in tmux session, do tmux fullscreen before opening yazi -->
+<!-- - make copy and paste back to ctrl c and ctrl v -->
+<!-- - file manager not in full screee -->
+<!-- - video player full screen-->
+<!-- - https://raine.dev/blog/my-tmux-setup/#core-settings adopt some coresettings -->
+<!-- - do some tmux popups e.g. move yazi to tmux popup and move lazygit to popup from tab https://www.youtube.com/watch?v=JMl-WZMCMss -->
 
 <!-- TODO: nvim -->
 <!-- - look back into test stuff that typcraft did so that it opened in another tmux pane, but make it split vertically 50/50-->
