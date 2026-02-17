@@ -6,8 +6,9 @@
 
 # Sessions to start (edit this array)
 SESSIONS=(
-  "tn4"
+  "retriever"
   "dotfiles"
+  "tn4"
   "the-well-grounded-rubyist-book"
   # "rspec-book"
   "config"

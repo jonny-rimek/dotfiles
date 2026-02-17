@@ -1,6 +1,7 @@
 --database=sqlite3
---javascript=importmap
+--skip-javascript
 --skip-test
+--skip-hotwire
 --skip-action-cable
 --skip-action-mailbox
 --skip-action-mailer
