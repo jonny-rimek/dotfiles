@@ -25,6 +25,7 @@ SUPPLEMENT_SCRIPTS=(
   "install-glab.sh"
   "install-bash-aliases.sh"
   "install-yazi.sh"
+  "install-postgres.sh"
 )
 # "clean-nvim.sh" # the config is ass i go back to omarchy default until i understand nvim better
 
