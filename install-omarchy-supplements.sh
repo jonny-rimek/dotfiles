@@ -26,6 +26,8 @@ SUPPLEMENT_SCRIPTS=(
   "install-bash-aliases.sh"
   "install-yazi.sh"
   "install-postgres.sh"
+  "install-mkcert.sh"
+  "install-hosts.sh"
 )
 # "clean-nvim.sh" # the config is ass i go back to omarchy default until i understand nvim better
 
