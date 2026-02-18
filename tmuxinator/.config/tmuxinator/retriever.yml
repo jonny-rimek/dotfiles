@@ -17,4 +17,4 @@ windows:
         -  while true; do lazygit; done
   - server:
       panes:
-        -  while true; do bin/rails server -p 3001; done
+        -  while true; do TLS=1 bin/rails server; done
