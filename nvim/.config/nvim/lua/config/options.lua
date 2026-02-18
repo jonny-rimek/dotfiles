@@ -18,6 +18,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.opt.swapfile = false
+vim.opt.smartindent = false
 
 -- Turn off autofmt
 vim.g.autoformat = false
