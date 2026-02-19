@@ -17,4 +17,4 @@ windows:
         -  while true; do lazygit; done
   - server:
       panes:
-        -  while true; do TLS=1 bin/rails server; done
+        -  while true; do TLS=1 bin/rails server -P /tmp/server-retriever.pid; done
