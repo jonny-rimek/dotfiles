@@ -28,6 +28,7 @@ SUPPLEMENT_SCRIPTS=(
   "install-postgres.sh"
   "install-mkcert.sh"
   "install-hosts.sh"
+  "install-awscli.sh"
 )
 # "clean-nvim.sh" # the config is ass i go back to omarchy default until i understand nvim better
 
