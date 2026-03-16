@@ -1,5 +1,6 @@
-alias rdbm="bin/rails db:migrate"
+alias rdbm="bin/rails db:migrate && RAILS_ENV=test bin/rails db:migrate"
 alias rr="bin/rails routes"
+alias rt="bin/rails test"
 alias rgs="bin/rails generate scaffold"
 alias rg="bin/rails generate"
 alias rgm="bin/rails generate model"
@@ -10,5 +11,5 @@ alias bu="bundle update"
 
 alias ci="bin/ci"
 
-alias rba="bundle exec rubocop --autocorrect"
-alias rbaa="bundle exec rubocop --autocorrect-all"
+alias rca="bundle exec rubocop --autocorrect"
+alias rcaa="bundle exec rubocop --autocorrect-all"
