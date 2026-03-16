@@ -9,9 +9,10 @@ SESSIONS=(
   "retriever"
   "dotfiles"
   "tn4"
-  "the-well-grounded-rubyist-book"
+  # "the-well-grounded-rubyist-book"
   # "rspec-book"
   "config"
+  "fizzy"
 )
 
 PRIMARY="dotfiles"
