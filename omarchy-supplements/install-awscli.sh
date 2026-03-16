@@ -37,5 +37,23 @@ else
   fi
 fi
 
+# Install Session Manager plugin
+print_info "Checking AWS Session Manager plugin..."
+
+if command_exists "session-manager-plugin"; then
+  print_success "AWS Session Manager plugin already installed"
+else
+  print_info "Installing AWS Session Manager plugin..."
+
+  yay -Sy --noconfirm aws-session-manager-plugin
+
+  if command_exists "session-manager-plugin"; then
+    print_success "AWS Session Manager plugin installed successfully"
+  else
+    print_error "AWS Session Manager plugin installation failed"
+    exit 1
+  fi
+fi
+
 echo
 print_success "AWS CLI is ready to use!"
