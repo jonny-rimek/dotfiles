@@ -20,9 +20,9 @@ return {
 		{
 			"<leader><space>",
 			function()
-				require("snacks").picker.recent()
+				require("snacks").picker.grep()
 			end,
-			desc = "Smart Files (Frecency)",
+			desc = "Find by Grep (Content)",
 		},
 		-- Project-wide search
 		{
