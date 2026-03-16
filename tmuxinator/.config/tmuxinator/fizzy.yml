@@ -1,0 +1,17 @@
+name: fizzy
+root: ~/dev/fizzy
+
+windows:
+  - editor:
+      panes:
+        -  while true; do nvim; done
+  - llm:
+      panes:
+        -  while true; do claude; done
+  - shell:
+  - rails console:
+      panes:
+        -  while true; do bin/rails console; done
+  - git:
+      panes:
+        -  while true; do lazygit; done
