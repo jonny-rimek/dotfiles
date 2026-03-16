@@ -49,6 +49,7 @@ stow-packages-mac.sh
   <!-- - lazygit -->
   <!-- - obsidian -->
 <!-- - keyring auth turn off https://kagi.com/assistant/6a362ed6-c8ef-4a93-9439-838b2c99cac8 ->
+<!-- - linter for erb https://old.reddit.com/r/rails/comments/1qpvjwa/herb_language_server_is_like_eslint_linter/ ->
 <!-- - switch to zsh  -->
 <!-- - refactor solarized to work with new colour setup in omarchy -->
 <!-- - alias for tmux attach  -->
