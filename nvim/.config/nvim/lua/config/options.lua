@@ -20,6 +20,14 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.opt.swapfile = false
 vim.opt.smartindent = false
 
+-- Remove '.' from indentkeys so typing '.' in insert mode doesn't re-indent
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "*",
+  callback = function()
+    vim.opt_local.indentkeys:remove(".")
+  end,
+})
+
 -- Turn off autofmt
 vim.g.autoformat = false
 
