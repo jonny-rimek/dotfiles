@@ -16,6 +16,9 @@ return {
         },
       }
 
+      -- Terraform / OpenTofu
+      opts.servers.terraformls = {}
+
       -- Disable inlay hints globally
       opts.inlay_hints = {
         enabled = false,
