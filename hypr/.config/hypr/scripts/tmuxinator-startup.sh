@@ -4,6 +4,10 @@
 # Automatically start tmuxinator sessions on Hyprland login
 #
 
+# Activate mise so tmuxinator shim can resolve Ruby
+# (Hyprland exec-once doesn't source shell profile)
+eval "$(/usr/bin/mise activate bash)" 2>/dev/null
+
 # Sessions to start (edit this array)
 SESSIONS=(
   "retriever"
