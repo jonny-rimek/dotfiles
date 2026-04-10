@@ -10,9 +10,4 @@ _mux_complete() {
 }
 complete -F _mux_complete mux
 
-alias md="tmuxinator dotfiles"
-alias mt="tmuxinator tn4"
-alias mc="tmuxinator config"
-alias md="tmuxinator rspec-book"
-
 alias ta="tmux attach"
