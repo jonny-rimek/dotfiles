@@ -1,0 +1,11 @@
+name: homelab
+root: ~/dev/homelab
+
+windows:
+  - editor:
+      panes:
+        - " while true; do nvim; done"
+  - llm:
+      panes:
+        - " while true; do claude; done"
+  - shell:
