@@ -1,5 +1,5 @@
 alias rdbm="bin/rails db:migrate && RAILS_ENV=test bin/rails db:migrate"
-alias rr="bin/rails routes"
+alias rr="bin/rails routes | less"
 alias rt="bin/rails test"
 alias rgs="bin/rails generate scaffold"
 alias rg="bin/rails generate"
