@@ -17,6 +17,7 @@ SUPPLEMENT_SCRIPTS=(
   "install-wget.sh"
   "install-firefox.sh"
   "install-chromium.sh"
+  "install-rpi-imager.sh"
   "install-veracrypt.sh"
   "install-keepassxc.sh"
   "install-zathura.sh"
