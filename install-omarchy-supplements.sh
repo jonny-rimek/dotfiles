@@ -32,6 +32,8 @@ SUPPLEMENT_SCRIPTS=(
   "install-mkcert.sh"
   "install-hosts.sh"
   "install-awscli.sh"
+  "install-dig.sh"
+  "disable-recent-files.sh"
 )
 # "clean-nvim.sh" # the config is ass i go back to omarchy default until i understand nvim better
 
