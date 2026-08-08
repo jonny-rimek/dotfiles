@@ -1,5 +1,6 @@
 [tools]
 node = "lts"
+pipx = "latest"
 ruby = "4.0.2"
 
 [settings]
