@@ -25,4 +25,4 @@ windows:
         -  while true; do bin/rails server -P /tmp/server-tn4.pid; done
   - llm:
       panes:
-        -  while true; do claude; done
+        -  while true; do aider; done
