@@ -10,7 +10,7 @@ windows:
         - " while true; do bundle exec guard; done"
   - llm:
       panes:
-        - " while true; do opencode; done"
+        - " while true; do hermes; done"
   - shell:
   - rails console:
       panes:

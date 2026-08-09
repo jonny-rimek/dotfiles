@@ -7,7 +7,7 @@ windows:
         -  while true; do nvim; done
   - llm:
       panes:
-        -  while true; do opencode; done
+        -  while true; do hermes; done
   - shell:
   - rails console:
       panes:

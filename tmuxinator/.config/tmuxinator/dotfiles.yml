@@ -11,4 +11,4 @@ windows:
         -  while true; do lazygit; done
   - llm:
       panes:
-        -  while true; do opencode; done
+        -  while true; do hermes; done
