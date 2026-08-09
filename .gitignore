@@ -9,3 +9,5 @@ yazi/.config/yazi/*
 !yazi/.config/yazi/package.toml
 
 tmuxinator/.config/tmuxinator/sc-*
+
+.hermes
