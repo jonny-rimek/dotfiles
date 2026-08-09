@@ -1,0 +1,6 @@
+# yt-dlp configuration
+# Reference: https://github.com/yt-dlp/yt-dlp#configuration
+
+# Download to ~/Videos with the video title as filename
+-P ~/Videos
+-o %(title)s.%(ext)s
