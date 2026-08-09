@@ -3,6 +3,7 @@ node = "latest"
 pipx = "latest"
 ruby = "4.0.2"
 uv = "latest"
+opencode = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = ["ruby"]
