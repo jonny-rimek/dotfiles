@@ -1,0 +1,92 @@
+#!/usr/bin/env bash
+# Managed by ansible. Also mirrored in ~/dev/dotfiles/restic/.local/bin/
+#
+# Parses the summary line from `restic backup --json` output and records a row
+# in the backup_metrics.backup_runs table. PSQL_CMD decides *how* psql is
+# invoked — locally on the Pi (`sudo -u postgres psql -d backup_metrics`) or
+# via ssh from the desktop (`ssh jonny@raspberry5-8gb psql -d backup_metrics`).
+set -uo pipefail
+
+HOST=""
+TAG=""
+STARTED=""
+FINISHED=""
+EXIT_CODE=""
+JSONL=""
+
+while [ $# -gt 0 ]; do
+  case "$1" in
+    --host)     HOST="$2";      shift 2 ;;
+    --tag)      TAG="$2";       shift 2 ;;
+    --started)  STARTED="$2";   shift 2 ;;
+    --finished) FINISHED="$2";  shift 2 ;;
+    --exit)     EXIT_CODE="$2"; shift 2 ;;
+    --jsonl)    JSONL="$2";     shift 2 ;;
+    *) echo "record-backup-run: unknown arg: $1" >&2; exit 2 ;;
+  esac
+done
+
+: "${PSQL_CMD:=sudo -u postgres psql -d backup_metrics}"
+
+if [ "$EXIT_CODE" = "0" ]; then SUCCESS="true"; else SUCCESS="false"; fi
+
+SUMMARY="{}"
+if [ -n "$JSONL" ] && [ -f "$JSONL" ]; then
+  SUMMARY=$(grep '"message_type":"summary"' "$JSONL" | tail -n1 || true)
+  [ -z "$SUMMARY" ] && SUMMARY="{}"
+fi
+
+jq_s() { jq -r "$1 // empty" <<<"$SUMMARY"; }
+jq_n() { jq -r "$1 // 0"     <<<"$SUMMARY"; }
+
+SNAPSHOT_ID=$(jq_s '.snapshot_id')
+FILES_NEW=$(jq_n       '.files_new')
+FILES_CHANGED=$(jq_n   '.files_changed')
+FILES_UNMOD=$(jq_n     '.files_unmodified')
+DIRS_NEW=$(jq_n        '.dirs_new')
+DIRS_CHANGED=$(jq_n    '.dirs_changed')
+DIRS_UNMOD=$(jq_n      '.dirs_unmodified')
+BYTES_ADDED=$(jq_n     '.data_added')
+BYTES_STORED=$(jq_n    '.data_added_packed')
+TOTAL_FILES=$(jq_n     '.total_files_processed')
+TOTAL_BYTES=$(jq_n     '.total_bytes_processed')
+
+ERROR_MSG=""
+if [ "$SUCCESS" = "false" ] && [ -n "$JSONL" ] && [ -f "$JSONL" ]; then
+  ERROR_MSG=$(grep -vE '"message_type":"(status|summary)"' "$JSONL" | tail -c 500 || true)
+fi
+
+CSV_ROW=$(jq -rn \
+  --arg host "$HOST" \
+  --arg tag "$TAG" \
+  --arg started "$STARTED" \
+  --arg finished "$FINISHED" \
+  --arg success "$SUCCESS" \
+  --arg exit_code "$EXIT_CODE" \
+  --arg snapshot_id "$SNAPSHOT_ID" \
+  --arg files_new "$FILES_NEW" \
+  --arg files_changed "$FILES_CHANGED" \
+  --arg files_unmodified "$FILES_UNMOD" \
+  --arg dirs_new "$DIRS_NEW" \
+  --arg dirs_changed "$DIRS_CHANGED" \
+  --arg dirs_unmodified "$DIRS_UNMOD" \
+  --arg bytes_added "$BYTES_ADDED" \
+  --arg bytes_stored "$BYTES_STORED" \
+  --arg total_files "$TOTAL_FILES" \
+  --arg total_bytes "$TOTAL_BYTES" \
+  --arg error "$ERROR_MSG" \
+  '[
+    $host, $tag, $started, $finished, $success, ($exit_code|tonumber),
+    (if $snapshot_id == "" then null else $snapshot_id end),
+    ($files_new|tonumber), ($files_changed|tonumber), ($files_unmodified|tonumber),
+    ($dirs_new|tonumber), ($dirs_changed|tonumber), ($dirs_unmodified|tonumber),
+    ($bytes_added|tonumber), ($bytes_stored|tonumber),
+    ($total_files|tonumber), ($total_bytes|tonumber),
+    (if $error == "" then null else $error end)
+  ] | @csv')
+
+{
+  printf "COPY backup_runs (host, tag, started_at, finished_at, success, exit_code, snapshot_id, files_new, files_changed, files_unmodified, dirs_new, dirs_changed, dirs_unmodified, bytes_added, bytes_stored, total_files, total_bytes, error_message) FROM STDIN WITH (FORMAT csv, NULL '');\n"
+  printf '%s\n' "$CSV_ROW"
+  printf '\\.\n'
+} | $PSQL_CMD -q -v ON_ERROR_STOP=1

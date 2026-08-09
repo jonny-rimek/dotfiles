@@ -1,0 +1,5 @@
+/home/jonny/Documents
+/home/jonny/Pictures
+/home/jonny/dev
+/home/jonny/.ssh
+/home/jonny/.gnupg

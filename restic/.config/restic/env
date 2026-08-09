@@ -1,0 +1,2 @@
+export RESTIC_REPOSITORY="sftp:u577362@u577362.your-storagebox.de:restic-desktop"
+export RESTIC_PASSWORD_COMMAND="keepassxc-cli show --quiet --show-protected --attributes Password --no-password --key-file $HOME/Documents/noninteractive $HOME/Documents/noninteractive.kdbx desktop/restic-password"
