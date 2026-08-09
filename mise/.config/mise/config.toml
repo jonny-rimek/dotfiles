@@ -1,5 +1,5 @@
 [tools]
-node = "latest"
+node = "lts"
 pipx = "latest"
 ruby = "4.0.2"
 uv = "latest"
