@@ -9,3 +9,6 @@ windows:
       panes:
         - " while true; do hermes; done"
   - shell:
+  - git:
+      panes:
+        -  while true; do lazygit; done
