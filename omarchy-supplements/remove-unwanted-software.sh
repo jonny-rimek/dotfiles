@@ -16,6 +16,7 @@ PACKAGES_TO_REMOVE=(
   "1password"
   "kdenlive"
   "obs-studio"
+  "opencode"
 )
 
 # ============================================================================
