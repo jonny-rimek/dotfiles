@@ -238,8 +238,8 @@ mcp_servers:
       - openrouter-mcp
     env:
       OPENROUTER_API_KEY: ${OPENROUTER_API_KEY}
-      OPENROUTER_ALLOWED_MODELS: deepseek/deepseek-v4-flash-0731,z-ai/glm-5.2,qwen/qwen3.8-max,moonshotai/kimi-k3
+      OPENROUTER_ALLOWED_MODELS: deepseek/deepseek-v4-flash-0731,moonshotai/kimi-k3
     enabled: true
 provider_routing:
-  only:
-    - digitalocean
+  # Only route to providers that support zero data retention.
+  data_collection: deny
