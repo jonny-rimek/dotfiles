@@ -16,7 +16,7 @@ SESSIONS=(
   # "the-well-grounded-rubyist-book"
   # "rspec-book"
   "config"
-  "fizzy"
+  "homelab"
 )
 
 PRIMARY="dotfiles"
