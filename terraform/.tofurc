@@ -1,6 +1,6 @@
 provider_installation {
   network_mirror {
-    url = "https://prod-retriever.jonny-rimek.com/v1/terraform/provider-mirror/"
+    url = "https://tn4-prod.kiko-wyrm.ts.net:8443/v1/terraform/provider-mirror/"
     # url = "https://retriever.localhost:3443/v1/terraform/provider-mirror/"
   }
 }
