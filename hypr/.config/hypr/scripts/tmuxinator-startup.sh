@@ -12,10 +12,10 @@ eval "$(/usr/bin/mise activate bash)" 2>/dev/null
 SESSIONS=(
   "retriever"
   "dotfiles"
-  "tn4"
+  # "tn4"
   # "the-well-grounded-rubyist-book"
   # "rspec-book"
-  "config"
+  # "config"
   "homelab"
 )
 
