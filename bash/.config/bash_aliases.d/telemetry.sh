@@ -1,3 +1,4 @@
 export CHECKPOINT_DISABLE=ANY_VALUE # terraform telemetry
 export GOTELEMETRY=off
 export VAGRANT_CHECKPOINT_DISABLE=ANY_VALUE
+export KILO_TELEMETRY_LEVEL=off kilo
