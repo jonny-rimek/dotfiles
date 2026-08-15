@@ -10,3 +10,5 @@ alias lt3="eza --long --header -all --group-directories-first --icons=auto --col
 alias lt4="eza --long --header -all --group-directories-first --icons=auto --colour=always --tree --level=4 --git --ignore-glob='.git' | less -R"
 
 alias c="clear"
+
+alias y="yazi"
