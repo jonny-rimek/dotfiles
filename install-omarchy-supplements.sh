@@ -24,7 +24,6 @@ SUPPLEMENT_SCRIPTS=(
   "install-bluetui.sh"
   "install-tmux.sh"
   "install-tmuxinator.sh"
-  "install-hermes.sh"
   "install-glab.sh"
   "install-bash-aliases.sh"
   "install-yazi.sh"
