@@ -35,13 +35,6 @@ stow --verbose --target=$HOME TOOLNAME
 ./install-omarchy-supplements.sh
 ```
 
-## Setup for mac
-
-```
-install-packages-mac.sh
-stow-packages-mac.sh
-```
-
 <!-- TODO: misc -->
 <!-- - create cheatsheet -->
   <!-- - yazi -->

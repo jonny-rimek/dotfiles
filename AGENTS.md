@@ -27,13 +27,9 @@ stow --verbose --delete --target=$HOME PACKAGE   # unstow
 
 ## Platform split
 
-- `nvim/` is the **Linux** Neovim config; `nvim-mac/` is the **macOS** one.
-  Do not mix them or symlink one to the other.
 - Root install scripts are platform-gated and will `exit 1` off-platform:
   - `install-omarchy-supplements.sh` → Arch Linux / Omarchy only (checks
     `/etc/arch-release`).
-  - `install-packages-mac.sh` / `stow-packages-mac.sh` → macOS only (checks
-    `$OSTYPE`).
   - `install-pi.sh` → runs Pi setup scripts over SSH (`pi-setup/`).
 
 ## Install script conventions
