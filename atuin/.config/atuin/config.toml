@@ -32,7 +32,7 @@
 # auto_sync = true
 
 ## enable or disable automatic update checks
-# update_check = true
+update_check = false
 
 ## address of the sync server
 # sync_address = "https://api.atuin.sh"
@@ -305,6 +305,9 @@ records = true
 ## Whether the theme manager should output normal or extra information to help fix themes.
 ## Boolean, true or false. If unset, left up to the theme manager.
 # debug = true
+
+[ai]
+enabled = false
 
 [search]
 ## The list of enabled filter modes, in order of priority.
