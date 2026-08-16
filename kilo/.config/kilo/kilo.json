@@ -29,10 +29,14 @@
   "permission": {
     "bash": "allow",
     "external_directory": {
-      "/home/jonny/.config/*": "allow",
-      "/home/jonny/.tmux/plugins/tpm/scripts/*": "allow",
-      "/tmp/*": "allow",
-      "/home/jonny/*": "allow"
+      "~/*": "allow",
+      "~/.config/**": "allow",
+      "/tmp/**": "allow"
+    },
+    "edit": {
+      "~/*": "ask",
+      "~/.config/**": "ask",
+      "~/dev/dotfiles/**": "allow"
     },
     "openrouter_search-docs": {
       "*": "allow"
@@ -41,7 +45,7 @@
   "indexing": {
     "enabled": true,
     "provider": "openrouter",
-    "model": "text-embedding-3-small",
+    "model": "openai/text-embedding-3-large",
     "vectorStore": "lancedb"
   },
   "mcp": {
