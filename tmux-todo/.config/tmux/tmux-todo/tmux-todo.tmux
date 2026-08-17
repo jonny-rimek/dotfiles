@@ -15,3 +15,6 @@ tmux bind-key t run-shell "ROOT=\$(git -C '#{pane_current_path}' rev-parse --sho
 
 # Search system TODO (prefix+T): fuzzy list of open todos via fzf
 tmux bind-key T display-popup -E -w 50% -h 60% -T 'Search system TODO' "bash '$DIR/search.sh' '$HOME/TODO.md'"
+
+# Show all open TODOs (prefix+V): System TODO first, then project TODO
+tmux bind-key V run-shell "tmux display-popup -E -w 50% -h 60% -T 'Open TODOs' \"bash '$DIR/show_all.sh' '#{pane_current_path}' | less -R\""
