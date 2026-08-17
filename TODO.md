@@ -1,4 +1,5 @@
 # TODO
+- [ ] Add theme switching for kilo, but wait for omarchy v4 <!-- created_at 17.08.2026 -->
 - [x] remove pi tailscale setup from this repo and add it to homela repo <!-- created_at 17.08.2026 --> <!-- closed_at 17.08.2026 -->
 - [ ] keybind for omarchy keybind help super ? <!-- created_at 16.08.2026 -->
 
