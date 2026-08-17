@@ -1,8 +1,9 @@
 [tools]
-node = "24.13.0"
-pipx = "1.11.1"
 ruby = "4.0.2"
 "gem:tmuxinator" = "3.4.1"
+node = "24.13.0"
+"npm:@kilocode/cli" = "latest"
+pipx = "1.11.1"
 uv = "0.11.29"
 
 [settings]
