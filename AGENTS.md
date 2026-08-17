@@ -1,7 +1,6 @@
 # AGENTS.md
 
-Guidance for AI coding agents working in this dotfiles repo. `CLAUDE.md` is also
-loaded as instructions; this file focuses on non-obvious, repo-specific facts.
+Guidance for AI coding agents working in this dotfiles repo.
 
 ## What this repo is
 
@@ -30,14 +29,12 @@ stow --verbose --delete --target=$HOME PACKAGE   # unstow
 - Root install scripts are platform-gated and will `exit 1` off-platform:
   - `install-omarchy-supplements.sh` → Arch Linux / Omarchy only (checks
     `/etc/arch-release`).
-  - `install-pi.sh` → runs Pi setup scripts over SSH (`pi-setup/`).
 
 ## Install script conventions
 
-- `omarchy-supplements/` and `pi-setup/` each have their **own** `helpers.sh`
-  (color print helpers, `require_root`/`require_non_root`, pacman checks).
-  Source the one next to the script, not a repo-root one — there is no
-  repo-root `helpers.sh`.
+- `omarchy-supplements/` has its **own** `helpers.sh` (color print helpers,
+  `require_root`/`require_non_root`, pacman checks). Source the one next to the
+  script, not a repo-root one — there is no repo-root `helpers.sh`.
 - To enable/disable an Omarchy supplement, edit the `SUPPLEMENT_SCRIPTS`
   array in `install-omarchy-supplements.sh` (order matters; scripts run in
   array order). Disabled entries are commented out, e.g. `clean-nvim.sh`.
