@@ -7,7 +7,7 @@ windows:
         - " while true; do nvim; done"
   - llm:
       panes:
-        - " while true; do kilo; done"
+        - " while true; do kilo --continue; done"
   - shell:
   - git:
       panes:

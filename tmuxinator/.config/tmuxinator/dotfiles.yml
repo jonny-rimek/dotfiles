@@ -11,4 +11,4 @@ windows:
         -  while true; do lazygit; done
   - llm:
       panes:
-        -  while true; do kilo; done
+        -  while true; do kilo --continue; done

@@ -10,7 +10,7 @@ windows:
         - " while true; do bundle exec guard; done"
   - llm:
       panes:
-        - " while true; do kilo; done"
+        - " while true; do kilo --continue; done"
   - shell:
   - rails console:
       panes:
