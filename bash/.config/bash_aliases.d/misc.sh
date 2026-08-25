@@ -12,3 +12,7 @@ alias lt4="eza --long --header -all --group-directories-first --icons=auto --col
 alias c="clear"
 
 alias y="yazi"
+
+alias yt="yt-dlp --cookies-from-browser firefox"
+
+alias sba="source ~/.bashrc"
