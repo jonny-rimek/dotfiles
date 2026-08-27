@@ -39,12 +39,43 @@ fi
 
 echo
 
+# bash-preexec is required for atuin to record commands in bash
+PREEXEC_PACKAGE="bash-preexec"
+
+print_info "Checking bash-preexec installation..."
+
+if package_installed "$PREEXEC_PACKAGE"; then
+  print_success "bash-preexec already installed"
+else
+  print_info "Installing bash-preexec..."
+
+  if is_root; then
+    pacman -Sy --noconfirm "$PREEXEC_PACKAGE"
+  else
+    sudo pacman -Sy --noconfirm "$PREEXEC_PACKAGE"
+  fi
+
+  if package_installed "$PREEXEC_PACKAGE"; then
+    print_success "bash-preexec installed successfully"
+  else
+    print_error "bash-preexec installation failed"
+    exit 1
+  fi
+fi
+
+echo
+
 # Configure shell plugin (bash uses the stowed bash_aliases.d mechanism)
 ALIASES_FILE="$HOME/.config/bash_aliases.d/atuin.sh"
 print_info "Checking atuin shell plugin configuration..."
 
 if [ -f "$ALIASES_FILE" ] && grep -q "atuin init" "$ALIASES_FILE"; then
-  print_success "atuin shell plugin already configured"
+  if grep -q "bash-preexec" "$ALIASES_FILE"; then
+    print_success "atuin shell plugin already configured (with bash-preexec)"
+  else
+    print_warning "atuin.sh does not source bash-preexec - recording will not work!"
+    print_info "  It should source /usr/share/bash-preexec/bash-preexec.sh before atuin init"
+  fi
 else
   print_warning "atuin.sh not found in ~/.config/bash_aliases.d/ - remember to run stow!"
   print_info "  It should contain: eval \"\$(atuin init bash)\""

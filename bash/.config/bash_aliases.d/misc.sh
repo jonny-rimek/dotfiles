@@ -3,6 +3,8 @@ unalias lt
 unalias lsa
 unalias lta
 unalias c
+unalias cx cy t ic ix icx 2>/dev/null
+unset -f fip dip lip tdl tdlm tsl 2>/dev/null
 
 alias l=" eza --long --header -all --group-directories-first --icons=auto --colour=always --git |  less -R"
 alias lt="eza --long --header -all --group-directories-first --icons=auto --colour=always --tree --level=2 --git --ignore-glob='.git' | less -R"

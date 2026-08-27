@@ -1,6 +1,6 @@
-unalias ga 2>/dev/null
-unalias gd 2>/dev/null
+unset -f ga gd 2>/dev/null
+unalias gcm gcam gcad 2>/dev/null
 
-alias gd="git diff"
+gd() { git diff "$@"; }
 alias gs="git status"
 alias lg="lazygit"
