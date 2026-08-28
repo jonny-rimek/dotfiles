@@ -8,4 +8,5 @@
 - aliases:
   - : d = docker · r = rails · mup = mise up · n = nvim · g = git
   - eff = fuzzy find file and open it in $EDITOR
-  . open = opens a file or URL with your default GUI app (PDF → viewer, open . → file manager, URL → browser)
+  - lt = ls -lisah + tree, lt3 and lt4 for deeper tree
+  - open = opens a file or URL with your default GUI app (PDF → viewer, open . → file manager, URL → browser)
