@@ -18,3 +18,7 @@ alias y="yazi"
 alias yt="yt-dlp --cookies-from-browser firefox"
 
 alias sba="source ~/.bashrc"
+
+alias pu="pacman -Syu"
+
+alias yu="ya pkg upgrade"
