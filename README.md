@@ -44,7 +44,6 @@ stow --verbose --target=$HOME TOOLNAME
 <!-- - keyring auth turn off https://kagi.com/assistant/6a362ed6-c8ef-4a93-9439-838b2c99cac8 ->
 <!-- - linter for erb https://old.reddit.com/r/rails/comments/1qpvjwa/herb_language_server_is_like_eslint_linter/ ->
 <!-- - switch to zsh  -->
-<!-- - refactor solarized to work with new colour setup in omarchy -->
 <!-- - alias for tmux attach  -->
 <!-- - import old dotfiles, but only the aliases i actually need  -->
 <!-- - nvim 0, jump to first char, not start of the line -->
@@ -84,7 +83,6 @@ stow --verbose --target=$HOME TOOLNAME
 
 <!-- TODO: LOW PRIO  -->
 <!-- - auto open protonpass as a web app in a dedicated workspace always -->
-<!-- - use ai to regenerate background image with solarized light colours -->
 <!-- - fix vimium j going up and vice versa map <s-j> NextTab didn''t change the behaviour (or the other one)'-->
 <!-- - sync zathora to omarchy/os theme  -->
 <!-- - veracrypt alias  -->
@@ -95,7 +93,6 @@ stow --verbose --target=$HOME TOOLNAME
 <!-- - integrate stow as a last step and do steps to clean up potentially existing config, only ask for confirmation if there are planned changes -->
 <!-- - remove all other themes or not, not sure its a good idea probably gonna break shit-->
 <!-- - download all repos to ~/dev if they don't exist yet -->
-<!-- - install solarized themes https://github.com/Gazler/omarchy-solarized-theme and light via cli -->
 <!-- - remap ctrl a to super a -->
 <!-- - proton drive? -->
 <!-- firefox -->

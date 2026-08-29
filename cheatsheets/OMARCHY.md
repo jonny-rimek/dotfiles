@@ -2,6 +2,7 @@
 
 - Clipboard past content - super + ctrl + v 
 - Mise update - mup
+- super + print - colour picker
 - yu - update all yazi plugins
 - pu - update all dependencies with pacman
 - lock - super + ctrl + l

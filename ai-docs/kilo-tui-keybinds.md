@@ -56,9 +56,10 @@ future kilo version initializes the keymap mode to `base` (the mode stack
 default is `"base"` but the data key is never written until something pushes),
 these bindings would start working with no config change.
 
-## Current bindings (2026-08-28)
+## Current bindings (2026-08-29)
 
-- `<leader>d` → `theme_switch_mode` (light/dark toggle) — works.
+- None. `<leader>d` → `theme_switch_mode` was unbound on 2026-08-29
+  (set to `"none"` in tui.json; the id has no default binding).
 
 ## Debugging checklist
 

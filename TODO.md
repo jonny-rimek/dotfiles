@@ -1,21 +1,24 @@
 # TODO
-- [ ] go through all tmuxinator config files and if it already starts a command, wrap it in "" and start it with a sapce, to avoid adding it to the history e.g.         - " while true; do psql retriever_development; done" <!-- created_at 29.08.2026 -->
-- [ ] add vim mode to todo plugin <!-- created_at 29.08.2026 -->
-- [ ] add a keybind to open todos in nvim <!-- created_at 29.08.2026 -->
 - [ ] look at workmux <!-- created_at 29.08.2026 -->
-- [ ] tmux escape mode y doesnt copy, only enter <!-- created_at 29.08.2026 -->
-- [ ] clean up solarized theme <!-- created_at 29.08.2026 -->
-- [ ] rebind yzai space to search <!-- created_at 29.08.2026 -->
 - [ ] restore neovim session between restarts https://old.reddit.com/r/neovim/top/ <!-- created_at 28.08.2026 -->
 - [ ] tmux todo plugin popup is still broken or again <!-- created_at 28.08.2026 -->
 - [ ] add space before every tmuxinator prompt to not add it to the history <!-- created_at 28.08.2026 -->
 - [ ] look into different gui for spotify, look at dhh omarchy v4 video <!-- created_at 28.08.2026 -->
 - [ ] Add image support for yazi, requires either foot (sixel) terminal or kitty/Ghostty <!-- created_at 28.08.2026 -->
-- [ ] migrate to zsh <!-- created_at 27.08.2026 -->
+- [ ] migrate to zsh after omarchy4 update <!-- created_at 27.08.2026 -->
 - [ ] Add theme switching for kilo, but wait for omarchy v4 <!-- created_at 17.08.2026 -->
-- [ ] keybind for omarchy keybind help super ? <!-- created_at 16.08.2026 -->
+- [ ] keybind for omarchy keybind help super ? after omarchy4 <!-- created_at 16.08.2026 -->
 
 ## DONE
+- [x] find colour picker shortcut and add it to omarchy cheatsheet <!-- created_at 29.08.2026 --> <!-- closed_at 29.08.2026 -->
+- [x] use colour picker to also use these colours for the tmux todo  <!-- created_at 29.08.2026 --> <!-- closed_at 29.08.2026 -->
+- [x] when is leader-t tab should switch to the view that shows all TODOs <!-- created_at 29.08.2026 --> <!-- closed_at 29.08.2026 -->
+- [x] add vim mode to todo plugin <!-- created_at 29.08.2026 --> <!-- closed_at 29.08.2026 -->
+- [x] add edit shortcut for thtodopupop, so that i can directly jump to that line and edit it in nvim <!-- created_at 29.08.2026 --> <!-- closed_at 29.08.2026 -->
+- [x] add a keybind to open todos in nvim <!-- created_at 29.08.2026 --> <!-- closed_at 29.08.2026 -->
+- [x] tmux escape mode y doesnt copy, only enter <!-- created_at 29.08.2026 --> <!-- closed_at 29.08.2026 -->
+- [x] go through all tmuxinator config files and if it already starts a command, wrap it in "" and start it with a sapce, to avoid adding it to the history e.g.         - " while true; do psql retriever_development; done" <!-- created_at 29.08.2026 --> <!-- closed_at 29.08.2026 -->
+- [x] rebind yzai space to search <!-- created_at 29.08.2026 --> <!-- closed_at 29.08.2026 -->
 - [x] update yazi and plugins <!-- created_at 29.08.2026 --> <!-- closed_at 29.08.2026 -->
 - [x] fix the weird chromium login password prompt thing <!-- created_at 28.08.2026 --> <!-- closed_at 28.08.2026 -->
 - [x] todo popup sometimes broken, esp in kilo <!-- created_at 22.08.2026 --> <!-- closed_at 28.08.2026 -->

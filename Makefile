@@ -1,4 +1,15 @@
 CONFIG_FILE := mise/.config/mise/config.toml
+BIN_DIR := $(HOME)/.local/bin
+TODO_TUI := $(BIN_DIR)/todo-tui
+
+.PHONY: todo-tui
+todo-tui:
+	mkdir -p $(BIN_DIR)
+	go build -C todo-tui -o $(TODO_TUI) .
+
+.PHONY: todo-tui-test
+todo-tui-test:
+	go test -C todo-tui ./...
 
 .PHONY: check-updates
 check-updates:
