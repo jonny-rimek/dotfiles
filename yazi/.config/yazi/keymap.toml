@@ -13,8 +13,8 @@ prepend_keymap = [
 
   # Neovim-style search and filter
   { on = [ "/" ], run = "filter", desc = "Filter files" },
-  { on = [ "f" ], run = "search fd", desc = "Search files by name (fd)" },
-  { on = [ "F" ], run = "search rg", desc = "Search files by content (ripgrep)" },
+  { on = [ "<Space>" ], run = "filter", desc = "Filter files" },
+  { on = [ "f" ], run = "plugin fzf", desc = "Fuzzy find files (fzf)" },
 
   # Easyjump navigation
   { on = [ "s" ], run = "plugin easyjump", desc = "Easyjump navigation" },
