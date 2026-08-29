@@ -17,7 +17,7 @@ print_section() {
     lineno=$((lineno + 1))
     case "$line" in
       "- [ ] "*)
-        text="${line#- [ ] }"
+        text="${line#"- [ ] "}"
         text="${text% <!-- created_at *}"
         printf '  %s\n' "$text"
         ;;

@@ -13,7 +13,7 @@ while IFS= read -r line; do
   lineno=$((lineno + 1))
   case "$line" in
     "- [ ] "*)
-      text="${line#- [ ] }"
+      text="${line#"- [ ] "}"
       text="${text% <!-- created_at *}"
       printf '%s\t%s\n' "$lineno" "$text"
       ;;
