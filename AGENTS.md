@@ -59,8 +59,13 @@ stow --verbose --delete --target=$HOME PACKAGE   # unstow
 - `bash/` — aliases split by topic in `.config/bash_aliases.d/*.sh` (git, aws,
   rails, tmux, stow, vpn, ...). Add new aliases as a new file or extend an
   existing themed file.
+- `kilo/` — Kilo CLI config (`kilo.json`) + vendored agent plugins
+  (`plugins/atuin.ts`, Atuin history hook; see `ai-docs/atuin-kilo-hook.md`).
 - `cheatsheets/` — personal reference docs (`TMUX.md`, `NVIM.md`, `YAZI.md`),
   not machine config.
+- `ai-docs/` — operational docs written by AI agents for AI agents
+  (integration notes, breakage modes, fix recipes). Repo-only, NOT a stow
+  package — never stow it.
 
 ## Conventions
 

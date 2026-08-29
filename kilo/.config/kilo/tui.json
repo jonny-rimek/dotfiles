@@ -1,0 +1,6 @@
+{
+  "$schema": "https://app.kilo.ai/tui.json",
+  "keybinds": {
+    "theme_switch_mode": "<leader>d"
+  }
+}
