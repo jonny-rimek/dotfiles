@@ -2,6 +2,8 @@
 
 - Clipboard past content - super + ctrl + v 
 - Mise update - mup
+- yu - update all yazi plugins
+- pu - update all dependencies with pacman
 - lock - super + ctrl + l
 - cd aliases to zd, you can just run `cd dot` from `~/` and it will find `~/dev/dotfiles`
   - zi is ff tui for the same
