@@ -22,9 +22,5 @@ windows:
       panes:
         - " while true; do psql retriever_development; done"
   - prod logs:
-      panes:
-        - " "
   - prod status:
-      panes:
-        - " "
 
