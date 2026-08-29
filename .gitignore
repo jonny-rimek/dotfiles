@@ -10,5 +10,6 @@ yazi/.config/yazi/*
 
 tmuxinator/.config/tmuxinator/sc-*
 
+/todo-tui/todo-tui
 
 /.kilo/*

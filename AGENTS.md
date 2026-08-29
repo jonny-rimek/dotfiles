@@ -61,6 +61,8 @@ stow --verbose --delete --target=$HOME PACKAGE   # unstow
   existing themed file.
 - `kilo/` — Kilo CLI config (`kilo.json`) + vendored agent plugins
   (`plugins/atuin.ts`, Atuin history hook; see `ai-docs/atuin-kilo-hook.md`).
+- `omarchy/` — Omarchy hooks only (`~/.config/omarchy/hooks/theme-set.d/`), e.g. the
+  kilo theme-sync hook that SIGUSR2s running kilo TUIs after `omarchy theme set`.
 - `cheatsheets/` — personal reference docs (`TMUX.md`, `NVIM.md`, `YAZI.md`),
   not machine config.
 - `ai-docs/` — operational docs written by AI agents for AI agents
