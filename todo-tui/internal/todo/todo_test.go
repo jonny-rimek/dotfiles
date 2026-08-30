@@ -3,7 +3,9 @@ package todo
 import (
 	"os"
 	"path/filepath"
+	"strings"
 	"testing"
+	"time"
 )
 
 func writeFile(t *testing.T, content string) string {
@@ -40,11 +42,39 @@ func TestParseFile(t *testing.T) {
 	if len(items) != 2 {
 		t.Fatalf("want 2 items, got %d", len(items))
 	}
-	if items[0].Line != 2 || items[0].Text != "one" {
-		t.Errorf("items[0] = %+v, want line 2 text one", items[0])
+	if items[0].Line != 4 || items[0].Text != "two" {
+		t.Errorf("items[0] = %+v, want line 4 text two", items[0])
 	}
-	if items[1].Line != 4 || items[1].Text != "two" {
-		t.Errorf("items[1] = %+v, want line 4 text two", items[1])
+	if items[1].Line != 2 || items[1].Text != "one" {
+		t.Errorf("items[1] = %+v, want line 2 text one", items[1])
+	}
+	if !items[1].CreatedAt.Equal(time.Date(2026, 8, 29, 0, 0, 0, 0, time.UTC)) {
+		t.Errorf("one CreatedAt = %v, want 29.08.2026", items[1].CreatedAt)
+	}
+}
+
+func TestParseFileSortsByCreatedAt(t *testing.T) {
+	path := writeFile(t, "# TODO\n"+
+		"- [ ] new <!-- created_at 20.08.2026 -->\n"+
+		"- [ ] old <!-- created_at 01.08.2026 -->\n"+
+		"- [ ] nodate\n"+
+		"- [ ] mid <!-- created_at 10.08.2026 -->\n"+
+		"\n## DONE\n")
+
+	items, err := ParseFile(path)
+	if err != nil {
+		t.Fatal(err)
+	}
+	var got []string
+	for _, it := range items {
+		got = append(got, it.Text)
+	}
+	want := []string{"nodate", "old", "mid", "new"}
+	if strings.Join(got, ",") != strings.Join(want, ",") {
+		t.Errorf("items = %v, want %v", got, want)
+	}
+	if !items[3].CreatedAt.Equal(time.Date(2026, 8, 20, 0, 0, 0, 0, time.UTC)) {
+		t.Errorf("new item CreatedAt = %v, want 20.08.2026", items[3].CreatedAt)
 	}
 }
 

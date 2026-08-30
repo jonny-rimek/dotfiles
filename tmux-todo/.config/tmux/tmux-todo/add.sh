@@ -79,15 +79,21 @@ while :; do
   trap 'rm -f "$tmpfile"' EXIT
 
   awk -v item="$item" '
-    /^# TODO$/ && !inserted {
-      print
-      print item
-      inserted = 1
-      next
-    }
-    { print }
+    { lines[NR] = $0 }
     END {
-      if (!inserted) print item
+      at = NR + 1
+      for (i = 1; i <= NR; i++) {
+        if (lines[i] ~ /^## DONE$/) {
+          at = i
+          while (at > 1 && lines[at - 1] == "") at--
+          break
+        }
+      }
+      for (i = 1; i <= NR; i++) {
+        if (i == at) print item
+        print lines[i]
+      }
+      if (at == NR + 1) print item
     }
   ' "$todofile" > "$tmpfile"
 

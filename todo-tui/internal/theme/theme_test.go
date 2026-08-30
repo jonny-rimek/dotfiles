@@ -34,9 +34,11 @@ foreground = "#575279"
 background = "#faf4ed"
 selection_foreground = "#575279"
 selection_background = "#dfdad9"
-color1 = "#b4637a"
-color3 = "#ea9d34"
-`, true)
+	color1 = "#b4637a"
+	color2 = "#286983"
+	color3 = "#ea9d34"
+	color8 = "#9893a5"
+	`, true)
 
 	c := For(home)
 	if c.Normal != "#d7827e" {
@@ -63,6 +65,12 @@ color3 = "#ea9d34"
 	if c.ErrFg != "#b4637a" {
 		t.Errorf("ErrFg = %q, want #b4637a", c.ErrFg)
 	}
+	if c.Ok != "#286983" {
+		t.Errorf("Ok = %q, want #286983", c.Ok)
+	}
+	if c.Gray != "#9893a5" {
+		t.Errorf("Gray = %q, want #9893a5", c.Gray)
+	}
 	if c.ChipFg != "#faf4ed" {
 		t.Errorf("ChipFg = %q, want #faf4ed", c.ChipFg)
 	}
@@ -76,6 +84,7 @@ background = "#1a1b26"
 selection_foreground = "#c0caf5"
 selection_background = "#7aa2f7"
 color1 = "#f7768e"
+color2 = "#a6d189"
 color3 = "#e0af68"
 `, false)
 
@@ -85,6 +94,9 @@ color3 = "#e0af68"
 	}
 	if c.Insert != "#9ece6a" {
 		t.Errorf("Insert = %q, want #9ece6a", c.Insert)
+	}
+	if c.Ok != "#a6d189" {
+		t.Errorf("Ok = %q, want #a6d189", c.Ok)
 	}
 	if c.Text != "#a9b1d6" {
 		t.Errorf("Text = %q, want #a9b1d6", c.Text)
@@ -117,6 +129,9 @@ func TestForUnknownThemeUsesDefaults(t *testing.T) {
 	}
 	if c.Text != "#c0caf5" || c.SelBg != "#292e42" {
 		t.Errorf("fallback palette = %+v", c)
+	}
+	if c.Ok != "#9ece6a" || c.Gray != "#565f89" {
+		t.Errorf("fallback ok/gray = %q/%q", c.Ok, c.Gray)
 	}
 }
 

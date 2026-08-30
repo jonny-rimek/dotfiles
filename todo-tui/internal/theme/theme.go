@@ -9,8 +9,10 @@ import (
 type Colors struct {
 	Normal   string
 	Insert   string
+	Ok       string
 	Text     string
 	Match    string
+	Gray     string
 	SelBg    string
 	SelFg    string
 	BarBg    string
@@ -38,8 +40,10 @@ func For(home string) Colors {
 	c := Colors{
 		Normal:   defaultChips[0],
 		Insert:   defaultChips[1],
+		Ok:       "#9ece6a",
 		Text:     "#c0caf5",
 		Match:    "#e0af68",
+		Gray:     "#565f89",
 		SelBg:    "#292e42",
 		SelFg:    "#c0caf5",
 		BarBg:    "#1a1b26",
@@ -58,6 +62,8 @@ func For(home string) Colors {
 	}
 	set(&c.Text, "foreground")
 	set(&c.Match, "color3")
+	set(&c.Ok, "color2")
+	set(&c.Gray, "color8")
 	set(&c.SelBg, "selection_background")
 	set(&c.SelFg, "selection_foreground")
 	set(&c.BarBg, "background")

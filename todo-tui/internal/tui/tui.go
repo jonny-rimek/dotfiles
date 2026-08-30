@@ -4,7 +4,10 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
+	"path/filepath"
+	"sort"
 	"strings"
+	"time"
 
 	"github.com/charmbracelet/bubbles/textinput"
 	tea "github.com/charmbracelet/bubbletea"
@@ -25,6 +28,13 @@ type styles struct {
 	sel         lipgloss.Style
 	selMatch    lipgloss.Style
 	match       lipgloss.Style
+	age         lipgloss.Style
+	ageSel      lipgloss.Style
+	scope       lipgloss.Style
+	projA       lipgloss.Style
+	projB       lipgloss.Style
+	projASel    lipgloss.Style
+	projBSel    lipgloss.Style
 	err         lipgloss.Style
 }
 
@@ -39,6 +49,13 @@ func newStyles(c theme.Colors) styles {
 		sel:         lipgloss.NewStyle().Bold(true).Foreground(lipgloss.Color(c.SelFg)).Background(lipgloss.Color(c.SelBg)),
 		selMatch:    lipgloss.NewStyle().Bold(true).Foreground(lipgloss.Color(c.Match)).Background(lipgloss.Color(c.SelBg)),
 		match:       lipgloss.NewStyle().Foreground(lipgloss.Color(c.Match)),
+		age:         lipgloss.NewStyle().Foreground(lipgloss.Color(c.HeaderFg)),
+		ageSel:      lipgloss.NewStyle().Foreground(lipgloss.Color(c.HeaderFg)).Background(lipgloss.Color(c.SelBg)),
+		scope:       lipgloss.NewStyle().Foreground(lipgloss.Color(c.Gray)),
+		projA:       lipgloss.NewStyle().Foreground(lipgloss.Color(c.Ok)),
+		projB:       lipgloss.NewStyle().Foreground(lipgloss.Color(c.ErrFg)),
+		projASel:    lipgloss.NewStyle().Foreground(lipgloss.Color(c.Ok)).Background(lipgloss.Color(c.SelBg)),
+		projBSel:    lipgloss.NewStyle().Foreground(lipgloss.Color(c.ErrFg)).Background(lipgloss.Color(c.SelBg)),
 		err:         lipgloss.NewStyle().Foreground(lipgloss.Color(c.ErrFg)),
 	}
 }
@@ -50,9 +67,13 @@ const (
 	ModeNormal
 )
 
+const selBottom = -2
+
 type row struct {
-	header string
-	item   *todo.Item
+	proj    string
+	projIdx int
+	item    *todo.Item
+	age     string
 }
 
 type Model struct {
@@ -71,6 +92,9 @@ type Model struct {
 	shown     int
 	lastQuery string
 	pendingG  bool
+	ageW      int
+	projW     int
+	nowFn     func() time.Time
 	selected  *todo.Item
 	err       string
 	st        styles
@@ -81,16 +105,16 @@ type editedMsg struct{ err error }
 
 func New(files []string) Model {
 	ti := textinput.New()
-	ti.Prompt = "/ "
+	ti.Prompt = ""
 	ti.CharLimit = 200
-	ti.Focus()
 	m := Model{
-		mode:      ModeInsert,
+		mode:      ModeNormal,
 		input:     ti,
 		files:     files,
 		fileFiles: files,
 		allFn:     todo.AllFiles,
-		sel:       -1,
+		sel:       selBottom,
+		nowFn:     time.Now,
 		st:        newStyles(theme.Current()),
 	}
 	m.loadFiles()
@@ -113,11 +137,51 @@ func (m *Model) toggleAllFiles() {
 		m.files = all
 	}
 	m.viewAll = !m.viewAll
-	m.sel = -1
+	m.sel = selBottom
 	m.loadFiles()
+	m.resizeInput()
 }
 
-func (m Model) Init() tea.Cmd { return textinput.Blink }
+func (m Model) textIndent() int {
+	return m.projW + m.ageW + 6
+}
+
+func (m *Model) resizeInput() {
+	if w := m.width - m.textIndent(); w > 0 {
+		m.input.Width = w
+	}
+}
+
+func (m Model) scopeName() string {
+	if len(m.files) == 1 {
+		return projectLabel(m.files[0])
+	}
+	return "all"
+}
+
+func (m Model) scopeLine() string {
+	inner := m.textIndent() - 3
+	if inner < 1 {
+		return m.st.scope.Render("[]")
+	}
+	label := m.scopeName()
+	pad := inner - len([]rune(label))
+	if pad < 0 {
+		pad = 0
+	}
+	left := pad / 2
+	return m.st.scope.Render("[") + m.st.scope.Render(strings.Repeat(" ", left)+label+strings.Repeat(" ", pad-left)) + m.st.scope.Render("]")
+}
+
+func projectLabel(path string) string {
+	home, err := os.UserHomeDir()
+	if err == nil && home != "" && path == filepath.Join(home, "TODO.md") {
+		return "~"
+	}
+	return filepath.Base(filepath.Dir(path))
+}
+
+func (m Model) Init() tea.Cmd { return nil }
 
 func (m *Model) loadFiles() {
 	m.items = nil
@@ -134,44 +198,73 @@ func (m *Model) loadFiles() {
 func (m *Model) rebuildRows() {
 	q := m.input.Value()
 	if q != m.lastQuery {
-		m.sel = -1
+		m.sel = selBottom
 		m.lastQuery = q
 	}
 	m.rows = nil
+	now := m.nowFn()
+	all := len(m.files) > 1
+	projIdx := map[string]int{}
+	assign := func(name string) int {
+		if _, ok := projIdx[name]; !ok {
+			projIdx[name] = len(projIdx) % 2
+		}
+		return projIdx[name]
+	}
 	if q == "" {
-		showHeaders := len(m.files) > 1
-		lastFile := ""
 		for i := range m.items {
-			it := &m.items[i]
-			if showHeaders && it.File != lastFile {
-				m.rows = append(m.rows, row{header: displayPath(it.File)})
-				lastFile = it.File
-			}
-			m.rows = append(m.rows, row{item: it})
+			m.rows = append(m.rows, itemRow(&m.items[i], now, all, assign))
 		}
 	} else {
 		texts := make([]string, len(m.items))
 		for i := range m.items {
 			texts[i] = m.items[i].Text
 		}
-		for _, match := range fuzzy.Find(q, texts) {
-			m.rows = append(m.rows, row{item: &m.items[match.Index]})
+		matches := fuzzy.Find(q, texts)
+		sort.SliceStable(matches, func(i, j int) bool {
+			if matches[i].Score != matches[j].Score {
+				return matches[i].Score < matches[j].Score
+			}
+			return matches[i].Index < matches[j].Index
+		})
+		for _, match := range matches {
+			m.rows = append(m.rows, itemRow(&m.items[match.Index], now, all, assign))
 		}
 	}
 	m.shown = 0
+	m.ageW = 0
+	m.projW = 0
 	for _, r := range m.rows {
 		if r.item != nil {
 			m.shown++
+			if w := len([]rune(r.age)); w > m.ageW {
+				m.ageW = w
+			}
+			if w := len([]rune(r.proj)); w > m.projW {
+				m.projW = w
+			}
 		}
 	}
 	m.snapSel()
 	m.ensureVisible()
 }
 
+func itemRow(it *todo.Item, now time.Time, all bool, assign func(string) int) row {
+	r := row{item: it, age: ageLabel(it.CreatedAt, now)}
+	if all {
+		r.proj = projectLabel(it.File)
+		r.projIdx = assign(r.proj)
+	}
+	return r
+}
+
 func (m *Model) snapSel() {
 	if len(m.rows) == 0 {
 		m.sel = -1
 		return
+	}
+	if m.sel == selBottom {
+		m.sel = len(m.rows)
 	}
 	if m.sel < 0 || m.sel >= len(m.rows) || m.rows[m.sel].item == nil {
 		found := -1
@@ -198,13 +291,25 @@ func (m *Model) move(delta int) {
 	if delta < 0 {
 		step = -1
 	}
-	for i := m.sel + step; i >= 0 && i < len(m.rows); i += step {
+	n := delta
+	if n < 0 {
+		n = -n
+	}
+	moved := 0
+	for i := m.sel + step; i >= 0 && i < len(m.rows) && moved < n; i += step {
 		if m.rows[i].item != nil {
 			m.sel = i
-			m.ensureVisible()
-			return
+			moved++
 		}
 	}
+	m.ensureVisible()
+}
+
+func halfPage(h int) int {
+	if h/2 < 1 {
+		return 1
+	}
+	return h / 2
 }
 
 func (m *Model) firstItem() {
@@ -248,11 +353,18 @@ func (m *Model) ensureVisible() {
 		return
 	}
 	h := m.listHeight()
+	maxOff := len(m.rows) - h
+	if maxOff < 0 {
+		maxOff = 0
+	}
 	if m.sel < m.offset {
 		m.offset = m.sel
 	}
 	if m.sel >= m.offset+h {
 		m.offset = m.sel - h + 1
+	}
+	if m.offset > maxOff {
+		m.offset = maxOff
 	}
 	if m.offset < 0 {
 		m.offset = 0
@@ -275,8 +387,11 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	case tea.WindowSizeMsg:
 		m.width = msg.Width
 		m.height = msg.Height
-		if w := m.width - 4; w > 10 {
-			m.input.Width = w
+		m.resizeInput()
+		if maxOff := len(m.rows) - m.listHeight(); maxOff < 0 {
+			m.offset = 0
+		} else if m.offset > maxOff {
+			m.offset = maxOff
 		}
 		m.ensureVisible()
 		return m, nil
@@ -346,7 +461,11 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			m.move(1)
 		case "k", "up":
 			m.move(-1)
-		case "i":
+		case "ctrl+d":
+			m.move(halfPage(m.listHeight()))
+		case "ctrl+u":
+			m.move(-halfPage(m.listHeight()))
+		case "i", "a":
 			m.mode = ModeInsert
 			m.input.Focus()
 			return m, textinput.Blink
@@ -376,53 +495,76 @@ func (m Model) View() string {
 		return "Loading..."
 	}
 	var b strings.Builder
-	b.WriteString(m.queryLine())
-	b.WriteString("\n")
 	listH := m.listHeight()
 	start := m.offset
 	end := start + listH
 	if end > len(m.rows) {
 		end = len(m.rows)
 	}
-	rendered := 0
+	for i := 0; i < listH-(end-start); i++ {
+		b.WriteString("\n")
+	}
 	for i := start; i < end; i++ {
 		b.WriteString(m.renderRow(i, i == m.sel))
 		b.WriteString("\n")
-		rendered++
 	}
-	for i := rendered; i < listH; i++ {
-		b.WriteString("\n")
-	}
+	b.WriteString(m.scopeLine())
+	b.WriteString(m.queryLine())
+	b.WriteString("\n")
 	b.WriteString(m.statusBar())
 	return b.String()
 }
 
+func ageLabel(t, now time.Time) string {
+	if t.IsZero() {
+		return ""
+	}
+	from := time.Date(t.Year(), t.Month(), t.Day(), 0, 0, 0, 0, time.UTC)
+	to := time.Date(now.Year(), now.Month(), now.Day(), 0, 0, 0, 0, time.UTC)
+	days := int(to.Sub(from).Hours() / 24)
+	switch {
+	case days <= 0:
+		return "today"
+	case days < 7:
+		return fmt.Sprintf("%dd ago", days)
+	case days < 30:
+		return fmt.Sprintf("%dw ago", days/7)
+	case days < 365:
+		return fmt.Sprintf("%dmo ago", days/30)
+	default:
+		return fmt.Sprintf("%dy ago", days/365)
+	}
+}
+
 func (m Model) queryLine() string {
 	if m.err != "" {
-		return m.st.err.Render(truncatePlain(m.err, m.width))
+		return " " + m.st.err.Render(truncatePlain(m.err, m.width))
 	}
-	return m.input.View()
+	return " " + m.input.View()
 }
 
 func (m Model) renderRow(i int, selected bool) string {
 	r := m.rows[i]
-	if r.header != "" {
-		return m.st.header.Render(truncatePlain(" "+r.header, m.width))
-	}
-	maxText := m.width - 2
+	proj := fmt.Sprintf("%*s", m.projW, r.proj)
+	age := fmt.Sprintf("%*s", m.ageW, r.age)
+	maxText := m.width - m.projW - m.ageW - 6
 	if maxText < 1 {
 		maxText = 1
 	}
 	text := truncatePlain(r.item.Text, maxText)
 	body := m.highlight(text, selected)
+	projS, projSelS := m.st.projA, m.st.projASel
+	if r.projIdx%2 == 1 {
+		projS, projSelS = m.st.projB, m.st.projBSel
+	}
 	if selected {
-		pad := m.width - 2 - len([]rune(text))
+		pad := m.width - m.projW - m.ageW - 6 - len([]rune(text))
 		if pad < 0 {
 			pad = 0
 		}
-		return m.st.sel.Render("> ") + body + m.st.sel.Render(strings.Repeat(" ", pad))
+		return projSelS.Render(proj+"  ") + m.st.ageSel.Render(age+"  ") + m.st.sel.Render("> ") + body + m.st.sel.Render(strings.Repeat(" ", pad))
 	}
-	return "  " + body
+	return projS.Render(proj) + "  " + m.st.age.Render(age) + "  " + "  " + body
 }
 
 func (m Model) highlight(text string, selected bool) string {
@@ -463,7 +605,7 @@ func (m Model) statusBar() string {
 	} else {
 		chipStyle, countStyle = m.st.normalChip, m.st.normalCount
 		label = "-- NORMAL --"
-		hints = "Space done · e edit · i insert"
+		hints = "Space done · e edit · i/a insert"
 	}
 	if len(m.fileFiles) == 1 {
 		if m.viewAll {
@@ -495,14 +637,6 @@ func (m Model) statusBar() string {
 		pad = 0
 	}
 	return chip + m.st.bar.Render(strings.Repeat(" ", pad)) + right
-}
-
-func displayPath(p string) string {
-	home, err := os.UserHomeDir()
-	if err == nil && home != "" && strings.HasPrefix(p, home+"/") {
-		return "~/" + p[len(home)+1:]
-	}
-	return p
 }
 
 func truncatePlain(s string, max int) string {

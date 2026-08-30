@@ -6,6 +6,7 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
+	"sort"
 	"strings"
 	"time"
 )
@@ -13,15 +14,29 @@ import (
 var Today = func() string { return time.Now().Format("02.01.2006") }
 
 type Item struct {
-	File string
-	Line int
-	Text string
+	File      string
+	Line      int
+	Text      string
+	CreatedAt time.Time
 }
 
 var commentRe = regexp.MustCompile(`<!--[^>]*-->`)
+var createdAtRe = regexp.MustCompile(`created_at (\d{2}\.\d{2}\.\d{4})`)
 
 func displayText(raw string) string {
 	return strings.TrimSpace(commentRe.ReplaceAllString(raw, " "))
+}
+
+func parseCreatedAt(raw string) time.Time {
+	m := createdAtRe.FindStringSubmatch(raw)
+	if m == nil {
+		return time.Time{}
+	}
+	t, err := time.Parse("02.01.2006", m[1])
+	if err != nil {
+		return time.Time{}
+	}
+	return t
 }
 
 func ParseFile(path string) ([]Item, error) {
@@ -33,12 +48,16 @@ func ParseFile(path string) ([]Item, error) {
 	for i, line := range strings.Split(string(data), "\n") {
 		if strings.HasPrefix(line, "- [ ] ") {
 			items = append(items, Item{
-				File: path,
-				Line: i + 1,
-				Text: displayText(strings.TrimPrefix(line, "- [ ] ")),
+				File:      path,
+				Line:      i + 1,
+				Text:      displayText(strings.TrimPrefix(line, "- [ ] ")),
+				CreatedAt: parseCreatedAt(line),
 			})
 		}
 	}
+	sort.SliceStable(items, func(i, j int) bool {
+		return items[i].CreatedAt.Before(items[j].CreatedAt)
+	})
 	return items, nil
 }
 
