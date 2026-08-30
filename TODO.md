@@ -8,6 +8,10 @@
 - [ ] migrate to zsh after omarchy4 update <!-- created_at 27.08.2026 -->
 - [ ] Add theme switching for kilo, but wait for omarchy v4 <!-- created_at 17.08.2026 -->
 - [ ] keybind for omarchy keybind help super ? after omarchy4 <!-- created_at 16.08.2026 -->
+- [ ] atuin keybind to switch filter to directory (vim mode ideally) <!-- created_at 29.08.2026 -->
+- [ ] need a useful shortcut to clear the search in todoplugin <!-- created_at 29.08.2026 -->
+- [ ] some bash commands get declined and i dont know why: "find /home/jonny/dev/dotfiles/kilo /home/jonny/dev/dotfiles/ghostyy /home/jonny/dev/dotfiles/waybar /home/jonny/dev/dotfiles/nvim -type f · denied by the plan agent (matched bash `find /home/jonny/dev/dotfiles/kilo /home/jonny/dev/dotfiles/ghostyy /home/jonny/dev/dotfiles/waybar /home/jonny/dev/dotfiles/nvim -type f`)" <!-- created_at 29.08.2026 -->
+- [ ] i think the kilo theme switching doesnt switch dark/light mode in kilo correctly <!-- created_at 30.08.2026 -->
 
 ## DONE
 - [x] find colour picker shortcut and add it to omarchy cheatsheet <!-- created_at 29.08.2026 --> <!-- closed_at 29.08.2026 -->
