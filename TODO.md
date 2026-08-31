@@ -11,14 +11,14 @@
 - [ ] need a useful shortcut to clear the search in todoplugin <!-- created_at 29.08.2026 -->
 - [ ] i think the kilo theme switching doesnt switch dark/light mode in kilo correctly <!-- created_at 30.08.2026 -->
 - [ ] remove border from hyprland windows completly <!-- created_at 30.08.2026 -->
-- [ ] update hyprland config format (or update to omarchy) <!-- created_at 30.08.2026 -->
 - [ ] audit current dotfiles setup working with a new omarchy quattro installation <!-- created_at 30.08.2026 -->
-- [ ] we should order the "all"" entries in the todo-tui by the most recent added item, descending. no time means it is the oldest entry. but still group by project. so project with the last added todo first. then all entries of that project. then project with 2nd latest todo etc <!-- created_at 30.08.2026 -->
 - [ ] unify all passwords back under keepassxc <!-- created_at 30.08.2026 -->
-- [ ] can you update the mux alias to exclude already open tmuxinator sessions <!-- created_at 31.08.2026 -->
 - [ ] Add subtaskss to  todo-tui. this is gonna require a new add task ui <!-- created_at 31.08.2026 -->
 
 ## DONE
+- [x] update hyprland config format (or update to omarchy) <!-- created_at 30.08.2026 --> <!-- closed_at 31.08.2026 -->
+- [x] we should order the "all"" entries in the todo-tui by the most recent added item, descending. no time means it is the oldest entry. but still group by project. so project with the last added todo first. then all entries of that project. then project with 2nd latest todo etc <!-- created_at 30.08.2026 --> <!-- closed_at 31.08.2026 -->
+- [x] can you update the mux alias to exclude already open tmuxinator sessions <!-- created_at 31.08.2026 --> <!-- closed_at 31.08.2026 -->
 - [x] find a way to sync keepassxc across devices. maybe with a stateful component <!-- created_at 30.08.2026 --> <!-- closed_at 30.08.2026 -->
 - [x] add space before every tmuxinator prompt to not add it to the history <!-- created_at 28.08.2026 --> <!-- closed_at 30.08.2026 -->
 - [x] some bash commands get declined and i dont know why: "find /home/jonny/dev/dotfiles/kilo /home/jonny/dev/dotfiles/ghostyy /home/jonny/dev/dotfiles/waybar /home/jonny/dev/dotfiles/nvim -type f · denied by the plan agent (matched bash `find /home/jonny/dev/dotfiles/kilo /home/jonny/dev/dotfiles/ghostyy /home/jonny/dev/dotfiles/waybar /home/jonny/dev/dotfiles/nvim -type f`)" <!-- created_at 29.08.2026 --> <!-- closed_at 30.08.2026 -->
