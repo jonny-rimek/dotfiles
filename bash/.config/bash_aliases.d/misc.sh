@@ -22,3 +22,6 @@ alias sba="source ~/.bashrc"
 alias pu="pacman -Syu"
 
 alias yu="ya pkg upgrade"
+
+alias vn="make -C ~/dev/homelab/infrastructure/opnsense vpn-on"
+alias vf="make -C ~/dev/homelab/infrastructure/opnsense vpn-off"
