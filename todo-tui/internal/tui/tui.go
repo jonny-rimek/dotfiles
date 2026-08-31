@@ -74,6 +74,8 @@ type row struct {
 	projIdx int
 	item    *todo.Item
 	age     string
+	lines   []string
+	offs    []int
 }
 
 type Model struct {
@@ -85,6 +87,7 @@ type Model struct {
 	viewAll   bool
 	items     []todo.Item
 	rows      []row
+	rowStart  []int
 	sel       int
 	offset    int
 	width     int
@@ -147,7 +150,7 @@ func (m Model) textIndent() int {
 }
 
 func (m *Model) resizeInput() {
-	if w := m.width - m.textIndent(); w > 0 {
+	if w := m.width - m.textIndent() - 1; w > 0 {
 		m.input.Width = w
 	}
 }
@@ -212,8 +215,12 @@ func (m *Model) rebuildRows() {
 		return projIdx[name]
 	}
 	if q == "" {
-		for i := range m.items {
-			m.rows = append(m.rows, itemRow(&m.items[i], now, all, assign))
+		if all {
+			m.rows = m.groupedRows(now, assign)
+		} else {
+			for i := range m.items {
+				m.rows = append(m.rows, itemRow(&m.items[i], now, all, assign))
+			}
 		}
 	} else {
 		texts := make([]string, len(m.items))
@@ -246,7 +253,86 @@ func (m *Model) rebuildRows() {
 		}
 	}
 	m.snapSel()
+	m.wrapRows()
 	m.ensureVisible()
+}
+
+func (m *Model) groupedRows(now time.Time, assign func(string) int) []row {
+	var files []string
+	latest := map[string]time.Time{}
+	byFile := map[string][]*todo.Item{}
+	for i := range m.items {
+		f := m.items[i].File
+		if _, ok := byFile[f]; !ok {
+			byFile[f] = nil
+			files = append(files, f)
+		}
+		byFile[f] = append(byFile[f], &m.items[i])
+		if m.items[i].CreatedAt.After(latest[f]) {
+			latest[f] = m.items[i].CreatedAt
+		}
+	}
+	sort.SliceStable(files, func(a, b int) bool {
+		return latest[files[a]].Before(latest[files[b]])
+	})
+	var rows []row
+	for _, f := range files {
+		for _, it := range byFile[f] {
+			rows = append(rows, itemRow(it, now, true, assign))
+		}
+	}
+	return rows
+}
+
+func (m *Model) wrapRows() {
+	maxText := m.width - m.textIndent()
+	m.rowStart = make([]int, len(m.rows)+1)
+	for i := range m.rows {
+		lines, offs := wrapPlain(m.rows[i].item.Text, maxText)
+		m.rows[i].lines = lines
+		m.rows[i].offs = offs
+		m.rowStart[i+1] = m.rowStart[i] + len(lines)
+	}
+}
+
+func wrapPlain(s string, max int) ([]string, []int) {
+	if max < 1 {
+		max = 1
+	}
+	r := []rune(s)
+	var lines []string
+	var offs []int
+	start := 0
+	n := len(r)
+	for start < n {
+		if n-start <= max {
+			lines = append(lines, strings.TrimRight(string(r[start:]), " "))
+			offs = append(offs, start)
+			break
+		}
+		breakAt := -1
+		for j := start + max; j > start; j-- {
+			if r[j] == ' ' {
+				breakAt = j
+				break
+			}
+		}
+		end := start + max
+		if breakAt > start {
+			end = breakAt
+			for end < n && r[end] == ' ' {
+				end++
+			}
+		}
+		lines = append(lines, strings.TrimRight(string(r[start:end]), " "))
+		offs = append(offs, start)
+		start = end
+	}
+	if len(lines) == 0 {
+		lines = append(lines, "")
+		offs = append(offs, 0)
+	}
+	return lines, offs
 }
 
 func itemRow(it *todo.Item, now time.Time, all bool, assign func(string) int) row {
@@ -353,15 +439,21 @@ func (m *Model) ensureVisible() {
 		return
 	}
 	h := m.listHeight()
-	maxOff := len(m.rows) - h
+	total := 0
+	if len(m.rowStart) > 0 {
+		total = m.rowStart[len(m.rowStart)-1]
+	}
+	maxOff := total - h
 	if maxOff < 0 {
 		maxOff = 0
 	}
-	if m.sel < m.offset {
-		m.offset = m.sel
+	top := m.rowStart[m.sel]
+	bot := top + len(m.rows[m.sel].lines) - 1
+	if top < m.offset {
+		m.offset = top
 	}
-	if m.sel >= m.offset+h {
-		m.offset = m.sel - h + 1
+	if bot >= m.offset+h {
+		m.offset = bot - h + 1
 	}
 	if m.offset > maxOff {
 		m.offset = maxOff
@@ -388,11 +480,7 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		m.width = msg.Width
 		m.height = msg.Height
 		m.resizeInput()
-		if maxOff := len(m.rows) - m.listHeight(); maxOff < 0 {
-			m.offset = 0
-		} else if m.offset > maxOff {
-			m.offset = maxOff
-		}
+		m.wrapRows()
 		m.ensureVisible()
 		return m, nil
 
@@ -496,17 +584,43 @@ func (m Model) View() string {
 	}
 	var b strings.Builder
 	listH := m.listHeight()
-	start := m.offset
-	end := start + listH
-	if end > len(m.rows) {
-		end = len(m.rows)
+	total := 0
+	if len(m.rowStart) > 0 {
+		total = m.rowStart[len(m.rowStart)-1]
 	}
-	for i := 0; i < listH-(end-start); i++ {
+	shown := listH
+	if rem := total - m.offset; rem < shown {
+		shown = rem
+	}
+	if shown < 0 {
+		shown = 0
+	}
+	for i := 0; i < listH-shown; i++ {
 		b.WriteString("\n")
 	}
-	for i := start; i < end; i++ {
-		b.WriteString(m.renderRow(i, i == m.sel))
+	written := 0
+	for i := range m.rows {
+		if written >= shown {
+			break
+		}
+		top := m.rowStart[i]
+		if top >= m.offset+shown {
+			break
+		}
+		from := m.offset - top
+		if from < 0 {
+			from = 0
+		}
+		to := len(m.rows[i].lines)
+		if top+to > m.offset+shown {
+			to = m.offset + shown - top
+		}
+		if from >= to {
+			continue
+		}
+		b.WriteString(m.renderRow(i, i == m.sel, from, to))
 		b.WriteString("\n")
+		written += to - from
 	}
 	b.WriteString(m.scopeLine())
 	b.WriteString(m.queryLine())
@@ -543,51 +657,64 @@ func (m Model) queryLine() string {
 	return " " + m.input.View()
 }
 
-func (m Model) renderRow(i int, selected bool) string {
+func (m Model) renderRow(i int, selected bool, from, to int) string {
 	r := m.rows[i]
 	proj := fmt.Sprintf("%*s", m.projW, r.proj)
 	age := fmt.Sprintf("%*s", m.ageW, r.age)
-	maxText := m.width - m.projW - m.ageW - 6
-	if maxText < 1 {
-		maxText = 1
+	indent := m.textIndent()
+	var matched map[int]bool
+	if q := m.input.Value(); q != "" {
+		if matches := fuzzy.Find(q, []string{r.item.Text}); len(matches) > 0 {
+			matched = make(map[int]bool, len(matches[0].MatchedIndexes))
+			for _, idx := range matches[0].MatchedIndexes {
+				matched[idx] = true
+			}
+		}
 	}
-	text := truncatePlain(r.item.Text, maxText)
-	body := m.highlight(text, selected)
 	projS, projSelS := m.st.projA, m.st.projASel
 	if r.projIdx%2 == 1 {
 		projS, projSelS = m.st.projB, m.st.projBSel
 	}
-	if selected {
-		pad := m.width - m.projW - m.ageW - 6 - len([]rune(text))
+	var out []string
+	for li := from; li < to; li++ {
+		line := r.lines[li]
+		body := m.renderBody(line, r.offs[li], selected, matched)
+		pad := m.width - indent - len([]rune(line))
 		if pad < 0 {
 			pad = 0
 		}
-		return projSelS.Render(proj+"  ") + m.st.ageSel.Render(age+"  ") + m.st.sel.Render("> ") + body + m.st.sel.Render(strings.Repeat(" ", pad))
+		if !selected {
+			if li == 0 {
+				out = append(out, projS.Render(proj)+"  "+m.st.age.Render(age)+"  "+"  "+body)
+			} else {
+				out = append(out, strings.Repeat(" ", indent)+body)
+			}
+			continue
+		}
+		if li == 0 {
+			out = append(out, projSelS.Render(proj+"  ")+m.st.ageSel.Render(age+"  ")+m.st.sel.Render("> ")+body+m.st.sel.Render(strings.Repeat(" ", pad)))
+		} else {
+			out = append(out, m.st.sel.Render(strings.Repeat(" ", indent))+body+m.st.sel.Render(strings.Repeat(" ", pad)))
+		}
 	}
-	return projS.Render(proj) + "  " + m.st.age.Render(age) + "  " + "  " + body
+	return strings.Join(out, "\n")
 }
 
-func (m Model) highlight(text string, selected bool) string {
-	if q := m.input.Value(); q != "" {
-		if matches := fuzzy.Find(q, []string{text}); len(matches) > 0 {
-			matched := make(map[int]bool, len(matches[0].MatchedIndexes))
-			for _, i := range matches[0].MatchedIndexes {
-				matched[i] = true
-			}
-			mStyle, pStyle := m.st.match, lipgloss.Style{}
-			if selected {
-				mStyle, pStyle = m.st.selMatch, m.st.sel
-			}
-			var b strings.Builder
-			for bi, r := range text {
-				if matched[bi] {
-					b.WriteString(mStyle.Render(string(r)))
-				} else {
-					b.WriteString(pStyle.Render(string(r)))
-				}
-			}
-			return b.String()
+func (m Model) renderBody(text string, off int, selected bool, matched map[int]bool) string {
+	if matched != nil {
+		mStyle, pStyle := m.st.match, lipgloss.Style{}
+		if selected {
+			mStyle, pStyle = m.st.selMatch, m.st.sel
 		}
+		var b strings.Builder
+		for bi, r := range text {
+			if matched[off+bi] {
+				b.WriteString(mStyle.Render(string(r)))
+			} else {
+				b.WriteString(pStyle.Render(string(r)))
+			}
+		}
+		return b.String()
 	}
 	if selected {
 		return m.st.sel.Render(text)

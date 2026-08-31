@@ -63,6 +63,100 @@ func resize(m Model, w, h int) Model {
 	return nm.(Model)
 }
 
+func TestLongTodoWrapsToMultipleLines(t *testing.T) {
+	long := strings.Repeat("word ", 30)
+	files := writeTODO(t, "# TODO\n- [ ] "+strings.TrimSpace(long)+"\n- [ ] short\n\n## DONE\n")
+	m := resize(New(files), 40, 12)
+	if len(m.rows[0].lines) < 2 {
+		t.Fatalf("long todo should wrap to multiple lines, got %d", len(m.rows[0].lines))
+	}
+	view := stripANSI(m.View())
+	if strings.Contains(view, "…") {
+		t.Error("long todo should wrap, not truncate with ellipsis")
+	}
+	if !strings.Contains(view, "short") {
+		t.Error("second item should still be visible below wrapped row")
+	}
+	for i, line := range strings.Split(view, "\n") {
+		if w := len([]rune(line)); w > 40 {
+			t.Errorf("line %d exceeds terminal width: %d chars: %q", i, w, line)
+		}
+	}
+}
+
+func TestWrappedRowContinuationIndented(t *testing.T) {
+	files := writeTODO(t, "# TODO\n- [ ] aaaaaa bbbbbb cccccc dddddd eeeeee ffffff\n\n## DONE\n")
+	m := resize(New(files), 20, 12)
+	lines := strings.Split(stripANSI(m.View()), "\n")
+	first := -1
+	for i, l := range lines {
+		if strings.Contains(l, "aaaaaa") {
+			first = i
+			break
+		}
+	}
+	if first < 0 {
+		t.Fatalf("wrapped row missing from view:\n%s", strings.Join(lines, "\n"))
+	}
+	wrapped := 1
+	for i := first + 1; i < len(lines) && strings.HasPrefix(strings.TrimSpace(lines[i]), "cccccc"); i++ {
+		if !strings.HasPrefix(lines[i], "      ") {
+			t.Errorf("wrapped continuation should be indented, got %q", lines[i])
+		}
+		wrapped++
+	}
+	if wrapped < 2 {
+		t.Errorf("row should wrap to multiple lines, got %d", wrapped)
+	}
+}
+
+func TestSelectionScrollsThroughWrappedLines(t *testing.T) {
+	var b strings.Builder
+	b.WriteString("# TODO\n")
+	for i := 1; i <= 5; i++ {
+		fmt.Fprintf(&b, "- [ ] filler %d\n", i)
+	}
+	b.WriteString("- [ ] " + strings.Repeat("wrapme ", 20) + "\n\n## DONE\n")
+	files := writeTODO(t, b.String())
+
+	m := resize(New(files), 40, 8)
+	if m.current() == nil || !strings.HasPrefix(m.current().Text, "wrapme") {
+		t.Fatalf("selection = %v, want wrapped item", m.current())
+	}
+	view := stripANSI(m.View())
+	if !strings.Contains(view, "wrapme wrapme wrapme wrapme") {
+		t.Error("wrapped item text should be visible")
+	}
+	m = pressUp(m)
+	if m.current().Text != "filler 5" {
+		t.Errorf("selection = %v, want filler 5", m.current())
+	}
+	if !strings.Contains(stripANSI(m.View()), "filler 5") {
+		t.Error("previous item should be visible after moving up")
+	}
+}
+
+func TestWrapPlainBreaksLongWords(t *testing.T) {
+	lines, offs := wrapPlain("aaa bbb ccc", 7)
+	if len(lines) != 2 || lines[0] != "aaa bbb" || lines[1] != "ccc" {
+		t.Errorf("wrapPlain = %v, want [aaa bbb ccc]", lines)
+	}
+	if len(offs) != 2 || offs[0] != 0 || offs[1] != 8 {
+		t.Errorf("offs = %v, want [0 8]", offs)
+	}
+	hard, hoffs := wrapPlain("abcdefghij", 4)
+	if len(hard) != 3 || hard[0] != "aaaa" && hard[0] != "abcd" {
+		t.Errorf("hard wrap = %v", hard)
+	}
+	if len(hoffs) != len(hard) || hoffs[0] != 0 {
+		t.Errorf("offs = %v for hard wrap", hoffs)
+	}
+	empty, eoffs := wrapPlain("", 10)
+	if len(empty) != 1 || empty[0] != "" || len(eoffs) != 1 {
+		t.Errorf("wrapPlain empty = %v", empty)
+	}
+}
+
 func TestStatusBarShowsNormalMode(t *testing.T) {
 	m := resize(New(nil), 80, 10)
 	view := m.View()
@@ -209,7 +303,7 @@ func TestSelectedRowFullyStyledWhenFiltering(t *testing.T) {
 	m := resize(New(files), 80, 12)
 	m = typeRunes(m, "i")
 	m = typeRunes(m, "al")
-	row := m.renderRow(m.sel, true)
+	row := m.renderRow(m.sel, true, 0, len(m.rows[m.sel].lines))
 	stripped := stripANSI(row)
 	if !strings.Contains(stripped, "> alpha one") {
 		t.Errorf("selected row content = %q, want %q", stripped, "> alpha one")
@@ -360,6 +454,40 @@ func TestSearchShrinkingResultsStayVisible(t *testing.T) {
 	}
 	if m2.current() == nil || !strings.Contains(stripANSI(m2.View()), m2.current().Text) {
 		t.Error("selected best match should be rendered in the clamped window")
+	}
+}
+
+func TestAllViewGroupsProjectsByLatestItem(t *testing.T) {
+	day := func(n int) string { return time.Now().AddDate(0, 0, -n).Format("02.01.2006") }
+	home := writeTODO(t, "# TODO\n- [ ] home old <!-- created_at "+day(10)+" -->\n- [ ] home fresh <!-- created_at "+day(1)+" -->\n\n## DONE\n")
+	otherDir := filepath.Join(t.TempDir(), "other")
+	if err := os.MkdirAll(otherDir, 0o755); err != nil {
+		t.Fatal(err)
+	}
+	other := filepath.Join(otherDir, "TODO.md")
+	if err := os.WriteFile(other, []byte("# TODO\n- [ ] other mid <!-- created_at "+day(5)+" -->\n\n## DONE\n"), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	thirdDir := filepath.Join(t.TempDir(), "third")
+	if err := os.MkdirAll(thirdDir, 0o755); err != nil {
+		t.Fatal(err)
+	}
+	third := filepath.Join(thirdDir, "TODO.md")
+	if err := os.WriteFile(third, []byte("# TODO\n- [ ] third oldest <!-- created_at "+day(20)+" -->\n\n## DONE\n"), 0o644); err != nil {
+		t.Fatal(err)
+	}
+
+	m := resize(New([]string{home[0], other, third}), 80, 20)
+	var got []string
+	for _, r := range m.rows {
+		got = append(got, r.item.Text)
+	}
+	want := []string{"third oldest", "other mid", "home old", "home fresh"}
+	if strings.Join(got, ",") != strings.Join(want, ",") {
+		t.Errorf("rows = %v, want %v", got, want)
+	}
+	if m.current() == nil || m.current().Text != "home fresh" {
+		t.Errorf("selection = %v, want home fresh", m.current())
 	}
 }
 
