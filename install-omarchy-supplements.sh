@@ -20,6 +20,7 @@ SUPPLEMENT_SCRIPTS=(
   "install-rpi-imager.sh"
   "install-veracrypt.sh"
   "install-keepassxc.sh"
+  "install-syncthing.sh"
   "install-zathura.sh"
   "install-bluetui.sh"
   "install-tmux.sh"
