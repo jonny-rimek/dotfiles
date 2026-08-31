@@ -3,6 +3,13 @@ set -uo pipefail
 
 source "$HOME/.config/restic/env"
 
+source "$HOME/.config/restic/env"
+
+# Self-heal stale locks left by killed/crashed runs (restic 0.19+: removes
+# stale locks only — fresh locks from concurrent runs are left alone).
+UNLOCK_OUT=$(restic unlock 2>&1) || true
+[ -n "$UNLOCK_OUT" ] && echo "restic unlock: $UNLOCK_OUT"
+
 LOG=$(mktemp /tmp/restic-check.XXXXXX.log)
 trap 'rm -f "$LOG"' EXIT
 
