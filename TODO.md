@@ -2,7 +2,6 @@
 - [ ] look at workmux <!-- created_at 29.08.2026 -->
 - [ ] restore neovim session between restarts https://old.reddit.com/r/neovim/top/ <!-- created_at 28.08.2026 -->
 - [ ] tmux todo plugin popup is still broken or again <!-- created_at 28.08.2026 -->
-- [ ] add space before every tmuxinator prompt to not add it to the history <!-- created_at 28.08.2026 -->
 - [ ] look into different gui for spotify, look at dhh omarchy v4 video <!-- created_at 28.08.2026 -->
 - [ ] Add image support for yazi, requires either foot (sixel) terminal or kitty/Ghostty <!-- created_at 28.08.2026 -->
 - [ ] migrate to zsh after omarchy4 update <!-- created_at 27.08.2026 -->
@@ -10,10 +9,21 @@
 - [ ] keybind for omarchy keybind help super ? after omarchy4 <!-- created_at 16.08.2026 -->
 - [ ] atuin keybind to switch filter to directory (vim mode ideally) <!-- created_at 29.08.2026 -->
 - [ ] need a useful shortcut to clear the search in todoplugin <!-- created_at 29.08.2026 -->
-- [ ] some bash commands get declined and i dont know why: "find /home/jonny/dev/dotfiles/kilo /home/jonny/dev/dotfiles/ghostyy /home/jonny/dev/dotfiles/waybar /home/jonny/dev/dotfiles/nvim -type f · denied by the plan agent (matched bash `find /home/jonny/dev/dotfiles/kilo /home/jonny/dev/dotfiles/ghostyy /home/jonny/dev/dotfiles/waybar /home/jonny/dev/dotfiles/nvim -type f`)" <!-- created_at 29.08.2026 -->
 - [ ] i think the kilo theme switching doesnt switch dark/light mode in kilo correctly <!-- created_at 30.08.2026 -->
+- [ ] remove border from hyprland windows completly <!-- created_at 30.08.2026 -->
+- [ ] update hyprland config format (or update to omarchy) <!-- created_at 30.08.2026 -->
+- [ ] audit current dotfiles setup working with a new omarchy quattro installation <!-- created_at 30.08.2026 -->
+- [ ] we should order the "all"" entries in the todo-tui by the most recent added item, descending. no time means it is the oldest entry. but still group by project. so project with the last added todo first. then all entries of that project. then project with 2nd latest todo etc <!-- created_at 30.08.2026 -->
+- [ ] unify all passwords back under keepassxc <!-- created_at 30.08.2026 -->
+- [ ] can you update the mux alias to exclude already open tmuxinator sessions <!-- created_at 31.08.2026 -->
+- [ ] Add subtaskss to  todo-tui. this is gonna require a new add task ui <!-- created_at 31.08.2026 -->
 
 ## DONE
+- [x] find a way to sync keepassxc across devices. maybe with a stateful component <!-- created_at 30.08.2026 --> <!-- closed_at 30.08.2026 -->
+- [x] add space before every tmuxinator prompt to not add it to the history <!-- created_at 28.08.2026 --> <!-- closed_at 30.08.2026 -->
+- [x] some bash commands get declined and i dont know why: "find /home/jonny/dev/dotfiles/kilo /home/jonny/dev/dotfiles/ghostyy /home/jonny/dev/dotfiles/waybar /home/jonny/dev/dotfiles/nvim -type f · denied by the plan agent (matched bash `find /home/jonny/dev/dotfiles/kilo /home/jonny/dev/dotfiles/ghostyy /home/jonny/dev/dotfiles/waybar /home/jonny/dev/dotfiles/nvim -type f`)" <!-- created_at 29.08.2026 --> <!-- closed_at 30.08.2026 -->
+- [x] make todo-tui tmux popup bigger and long todos span multiple lines, instead of being cut of <!-- created_at 30.08.2026 --> <!-- closed_at 30.08.2026 -->
+- [x] replace tmux leader s with whatever tmux leader f is (some pluugin irrc) <!-- created_at 30.08.2026 --> <!-- closed_at 30.08.2026 -->
 - [x] find colour picker shortcut and add it to omarchy cheatsheet <!-- created_at 29.08.2026 --> <!-- closed_at 29.08.2026 -->
 - [x] use colour picker to also use these colours for the tmux todo  <!-- created_at 29.08.2026 --> <!-- closed_at 29.08.2026 -->
 - [x] when is leader-t tab should switch to the view that shows all TODOs <!-- created_at 29.08.2026 --> <!-- closed_at 29.08.2026 -->

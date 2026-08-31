@@ -1,2 +1,0 @@
-cat mise/.config/mise/config.toml >> /path/to/chat/file.txt
-# or just paste it directly in our conversation
