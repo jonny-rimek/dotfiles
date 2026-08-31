@@ -12,10 +12,10 @@ tmux bind-key a run-shell "ROOT=\$(git -C '#{pane_current_path}' rev-parse --sho
 tmux bind-key A display-popup -E -w 40% -h 5 -T 'Add system TODO' "bash '$DIR/add.sh' '$HOME/TODO.md'"
 
 # Search project TODO (prefix+t): resolve git root from current pane, fall back to $HOME
-tmux bind-key t run-shell "ROOT=\$(git -C '#{pane_current_path}' rev-parse --show-toplevel 2>/dev/null); [ -z \"\$ROOT\" ] && ROOT='$HOME'; case \"\$ROOT\" in \"\$HOME\") P='~/TODO.md' ;; \"\$HOME\"/*) P=\"~/\${ROOT#\$HOME/}/TODO.md\" ;; *) P=\"\$ROOT/TODO.md\" ;; esac; tmux display-popup -E -w 50% -h 60% -T \"Search project \$P\" \"'$BIN' --file \\\"\$ROOT/TODO.md\\\"\"; exit 0"
+tmux bind-key t run-shell "ROOT=\$(git -C '#{pane_current_path}' rev-parse --show-toplevel 2>/dev/null); [ -z \"\$ROOT\" ] && ROOT='$HOME'; case \"\$ROOT\" in \"\$HOME\") P='~/TODO.md' ;; \"\$HOME\"/*) P=\"~/\${ROOT#\$HOME/}/TODO.md\" ;; *) P=\"\$ROOT/TODO.md\" ;; esac; tmux display-popup -E -w 60% -h 60% -T \"Search project \$P\" \"'$BIN' --file \\\"\$ROOT/TODO.md\\\"\"; exit 0"
 
 # Search system TODO (prefix+T): modal TUI over the system TODO file
-tmux bind-key T display-popup -E -w 50% -h 60% -T 'Search system ~/TODO.md' "'$BIN' --file '$HOME/TODO.md'"
+tmux bind-key T display-popup -E -w 60% -h 60% -T 'Search system ~/TODO.md' "'$BIN' --file '$HOME/TODO.md'"
 
 # Show all open TODOs (prefix+V): System TODO first, then project TODOs
-tmux bind-key V run-shell "tmux display-popup -E -w 50% -h 60% -T 'Open TODOs' \"'$BIN' --all\""
+tmux bind-key V run-shell "tmux display-popup -E -w 60% -h 60% -T 'Open TODOs' \"'$BIN' --all\""

@@ -12,14 +12,22 @@ The leader in tmux is ctrl s with my config, that means every tmux command, by d
 ### Misc
 
 ```sh 
+# shows all shortcuts
+<leader> ?
+
+# opens popup to open tmuxinator sessions
+<leader> m
+
 # reload config, doesn't work for certain things, sometimes you have to kill all sessions and start a new session 
 <leader> r
 
 # start a project (collection of windows in tmux)
-tmuxinator start PROJECT_NAME 
 mux PROJECT_NAME               # alias works with auto complete
 
-<leader> [ # enter copy mode, it's the same as vim normal mode
+# start a tmuxinator session from an fzf popup (same as mux, from inside tmux)
+<leader> m                     # switches to the session if it is already running
+
+<leader> ESC # enter copy mode, it's the same as vim normal mode
 
 Navigation:      j/k (down/up), h/l (left/right), Ctrl-u/d (page up/down)
 Search:          / (forward), ? (backward), n/N (next/prev match)
@@ -73,21 +81,31 @@ alt NUMBER
 
 I'm not in love with panes, I mostly use windows(not the OS :D), so the shortcuts are mostly default and as a result quite awkward
 ```sh
-# split pane, TODO: rebind to something more ergonomic
-<leader> %
+# split pane vertically
+<leader> v
+
+# split horizontally
+<leader> h
 
 # zoom into pane, makes a pane temporarily fullscreen
 <leader> z
 
 # navigate to right pane
-<leader> k
+ctrl k
+<leader> k 
+
 
 # navigate to left pane
+ctrl j
 <leader> j
 
 # convert pane to window
 <leader> !
 
-# close pane TODO: requires confirmation, ugh
+# close pane
 <leader> x
 ```
+
+### Resizing Panes
+
+ctrl + alt + shift + arrowkeys
