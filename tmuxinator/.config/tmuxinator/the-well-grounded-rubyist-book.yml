@@ -8,9 +8,9 @@ windows:
       main-pane-width: 70
       panes:
         - editor:
-          -  while true; do nvim; done
+          - " while true; do nvim; done"
         - console:
   - irb:
       panes:
-        -  while true; do irb; done
+        - " while true; do irb; done"
   - console:

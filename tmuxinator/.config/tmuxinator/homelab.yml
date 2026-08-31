@@ -11,4 +11,4 @@ windows:
   - shell:
   - git:
       panes:
-        -  while true; do lazygit; done
+        - " while true; do lazygit; done"

@@ -4,14 +4,14 @@ root: ~/dev/fizzy
 windows:
   - editor:
       panes:
-        -  while true; do nvim; done
+        - " while true; do nvim; done"
   - llm:
       panes:
-        -  while true; do kilo --continue; done
+        - " while true; do kilo --continue; done"
   - shell:
   - rails console:
       panes:
-        -  while true; do bin/rails console; done
+        - " while true; do bin/rails console; done"
   - git:
       panes:
-        -  while true; do lazygit; done
+        - " while true; do lazygit; done"

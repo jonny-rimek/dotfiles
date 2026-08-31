@@ -8,21 +8,21 @@ windows:
       layout: main-vertical
       main-pane-width: 70
       panes:
-        -  while true; do nvim; done
-        -  while true; do bundle exec guard -G guardfile.minimal.rb --clear --no-notify; done
+        - " while true; do nvim; done"
+        - " while true; do bundle exec guard -G guardfile.minimal.rb --clear --no-notify; done"
   - tests:
       panes:
-        -  while true; do bundle exec guard --clear --no-notify; done
+        - " while true; do bundle exec guard --clear --no-notify; done"
   - rails console:
       panes:
-        -  while true; do bin/rails console; done
+        - " while true; do bin/rails console; done"
   - shell:
   - git:
       panes:
-        -  while true; do lazygit; done
+        - " while true; do lazygit; done"
   - server:
       panes:
-        -  while true; do bin/rails server -P /tmp/server-tn4.pid; done
+        - " while true; do bin/rails server -P /tmp/server-tn4.pid; done"
   - llm:
       panes:
-        -  while true; do kilo --continue; done
+        - " while true; do kilo --continue; done"

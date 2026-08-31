@@ -4,11 +4,11 @@ root: ~/dev/dotfiles
 windows:
   - editor:
       panes:
-        -  while true; do nvim; done
+        - " while true; do nvim; done"
   - shell:
   - git:
       panes:
-        -  while true; do lazygit; done
+        - " while true; do lazygit; done"
   - llm:
       panes:
-        -  while true; do kilo --continue; done
+        - " while true; do kilo --continue; done"
