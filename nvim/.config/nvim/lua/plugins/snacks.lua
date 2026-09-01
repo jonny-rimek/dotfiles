@@ -14,8 +14,23 @@ return {
 				git_files = { hidden = true },
 			},
 		},
+		zen = {
+			toggles = {
+				dim = false,
+				line_number = false,
+				git_signs = false,
+				mini_diff_signs = false,
+			},
+		},
 	},
 	keys = {
+		{
+			"<leader>z",
+			function()
+				require("snacks").zen()
+			end,
+			desc = "Toggle Zen Mode",
+		},
 		-- Smart picker with frecency
 		{
 			"<leader><space>",
