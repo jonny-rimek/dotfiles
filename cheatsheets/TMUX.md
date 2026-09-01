@@ -12,6 +12,9 @@ The leader in tmux is ctrl s with my config, that means every tmux command, by d
 ### Misc
 
 ```sh 
+# zenmode (hide status bar)
+<leader> Z
+
 # shows all shortcuts
 <leader> ?
 
