@@ -14,8 +14,11 @@
 - [ ] audit current dotfiles setup working with a new omarchy quattro installation <!-- created_at 30.08.2026 -->
 - [ ] unify all passwords back under keepassxc <!-- created_at 30.08.2026 -->
 - [ ] Add subtaskss to  todo-tui. this is gonna require a new add task ui <!-- created_at 31.08.2026 -->
+- [ ] create a project to debug internet problems caused by vpn? <!-- created_at 01.09.2026 -->
 
 ## DONE
+- [x] what is the super+g shortcut? something with a grp or shit? probably dont need it remove <!-- created_at 01.09.2026 --> <!-- closed_at 02.09.2026 -->
+- [x] add borders to popups, but not other windows? <!-- created_at 01.09.2026 -->  <!-- closed_at 02.09.2026 -->
 - [x] update hyprland config format (or update to omarchy) <!-- created_at 30.08.2026 --> <!-- closed_at 31.08.2026 -->
 - [x] we should order the "all"" entries in the todo-tui by the most recent added item, descending. no time means it is the oldest entry. but still group by project. so project with the last added todo first. then all entries of that project. then project with 2nd latest todo etc <!-- created_at 30.08.2026 --> <!-- closed_at 31.08.2026 -->
 - [x] can you update the mux alias to exclude already open tmuxinator sessions <!-- created_at 31.08.2026 --> <!-- closed_at 31.08.2026 -->

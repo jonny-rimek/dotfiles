@@ -1,0 +1,29 @@
+[Unit]
+Description=llama.cpp server (gemma-4-26B-A4B, local backup LLM)
+Documentation=https://github.com/ggml-org/llama.cpp
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/llama-server \
+  -m %h/.local/share/llama.cpp/models/gemma-4-26B-A4B-it-qat-UD-Q4_K_XL.gguf \
+  --mmproj %h/.local/share/llama.cpp/models/mmproj-F16.gguf \
+  --host 127.0.0.1 \
+  --port 8080 \
+  -c 32768 \
+  -ctk q8_0 \
+  -ctv q8_0 \
+  -t 8 \
+  -ngl 99 \
+  --n-cpu-moe 20 \
+  --parallel 1 \
+  --load-mode none \
+  --jinja \
+  --reasoning off \
+  --alias gemma-4-26b
+Restart=on-failure
+RestartSec=3
+TimeoutStartSec=300
+
+[Install]
+WantedBy=default.target

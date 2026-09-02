@@ -61,10 +61,14 @@ stow --verbose --delete --target=$HOME PACKAGE   # unstow
   existing themed file.
 - `kilo/` — Kilo CLI config (`kilo.json`) + vendored agent plugins
   (`plugins/atuin.ts`, Atuin history hook; see `ai-docs/atuin-kilo-hook.md`).
+- `llamacpp/` — local llama.cpp LLM server (gemma-4-26B-A4B QAT): systemd user
+  unit, model download script, `llm*` bash helpers (see
+  `ai-docs/llama-cpp-local-llm.md` for ops/tuning).
 - `omarchy/` — Omarchy hooks only (`~/.config/omarchy/hooks/theme-set.d/`), e.g. the
   kilo theme-sync hook that SIGUSR2s running kilo TUIs after `omarchy theme set`.
-- `cheatsheets/` — personal reference docs (`TMUX.md`, `NVIM.md`, `YAZI.md`),
-  not machine config.
+- `cheatsheets/` — **human-written** personal reference docs (`TMUX.md`, `NVIM.md`,
+  `YAZI.md`), not machine config. AI agents must NEVER add or generate docs here —
+  agent-written operational docs belong in `ai-docs/`.
 - `ai-docs/` — operational docs written by AI agents for AI agents
   (integration notes, breakage modes, fix recipes). Repo-only, NOT a stow
   package — never stow it.

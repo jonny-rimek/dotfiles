@@ -1,0 +1,74 @@
+#!/usr/bin/env bash
+#
+# llm-model-download
+# Download the local LLM GGUF models (llama.cpp server) from Hugging Face
+# Idempotent: skips files that are already present with the correct size
+#
+# Usage: llm-model-download [--verify]
+#   --verify  additionally check SHA-256 (slow on large files)
+#
+
+set -e
+
+ENV_FILE="${HOME}/.config/llama.cpp/env"
+if [ -f "$ENV_FILE" ]; then
+  source "$ENV_FILE"
+fi
+
+MODELS_DIR="${LLAMA_MODELS_DIR:-$HOME/.local/share/llama.cpp/models}"
+REPO_URL="https://huggingface.co/unsloth/gemma-4-26B-A4B-it-qat-GGUF/resolve/main"
+
+VERIFY=0
+[ "${1:-}" = "--verify" ] && VERIFY=1
+
+download_file() {
+  local filename="$1"
+  local expected_size="$2"
+  local expected_sha="$3"
+  local dest="$MODELS_DIR/$filename"
+
+  if [ -f "$dest" ]; then
+    local actual_size
+    actual_size=$(stat -c%s "$dest")
+    if [ "$actual_size" = "$expected_size" ]; then
+      if [ "$VERIFY" = "1" ]; then
+        echo "verifying $filename ..."
+        echo "$expected_sha  $dest" | sha256sum -c - >/dev/null
+        echo "ok (size+sha256): $filename"
+      else
+        echo "already present: $filename"
+      fi
+      return 0
+    fi
+    echo "size mismatch for $filename (have $actual_size, want $expected_size), re-downloading" >&2
+    rm -f "$dest"
+  fi
+
+  mkdir -p "$MODELS_DIR"
+  echo "downloading $filename ($(numfmt --to=iec "$expected_size")) ..."
+  curl -fL --retry 5 --retry-delay 5 -C - -o "$dest.part" "$REPO_URL/$filename"
+  actual_size=$(stat -c%s "$dest.part")
+  if [ "$actual_size" != "$expected_size" ]; then
+    echo "download size mismatch for $filename: got $actual_size, want $expected_size" >&2
+    exit 1
+  fi
+  mv "$dest.part" "$dest"
+
+  if [ "$VERIFY" = "1" ]; then
+    echo "verifying $filename ..."
+    echo "$expected_sha  $dest" | sha256sum -c - >/dev/null
+  fi
+  echo "ok: $filename"
+}
+
+download_file "gemma-4-26B-A4B-it-qat-UD-Q4_K_XL.gguf" \
+  "14249047104" \
+  "a7c5bc715f5ff8e99a3e8901ce7d2b42b402c669bf24f7c5250747633d0f5891"
+
+download_file "mmproj-F16.gguf" \
+  "1193058784" \
+  "d00f211a7d4f7fb1979d75d8d934e2ccffb5920b08fd9562165700fdfcc5dd8"
+
+echo
+echo "models ready in $MODELS_DIR"
+echo "start the server with: llm-start  (or just use: llm \"prompt\")"

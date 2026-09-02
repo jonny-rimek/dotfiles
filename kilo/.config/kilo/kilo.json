@@ -3,7 +3,8 @@
   "lsp": {},
   "enabled_providers": [
     "openrouter",
-    "zai-coding-plan"
+    "zai-coding-plan",
+    "llama-local"
   ],
   "provider": {
     "openrouter": {
@@ -27,6 +28,20 @@
       "whitelist": [
         "glm-5.3",
         "glm-5.3-flash"
+      ]
+    },
+    "llama-local": {
+      "options": {
+        "baseURL": "http://127.0.0.1:8080/v1",
+        "apiKey": "sk-noop"
+      },
+      "models": {
+        "gemma-4-26b": {
+          "name": "Gemma 4 26B (local)"
+        }
+      },
+      "whitelist": [
+        "gemma-4-26b"
       ]
     }
   },
