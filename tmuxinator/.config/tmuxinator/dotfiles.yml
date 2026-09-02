@@ -5,10 +5,10 @@ windows:
   - editor:
       panes:
         - " while true; do nvim; done"
+  - llm:
+      panes:
+        - " while true; do kilo --continue; done"
   - shell:
   - git:
       panes:
         - " while true; do lazygit; done"
-  - llm:
-      panes:
-        - " while true; do kilo --continue; done"
