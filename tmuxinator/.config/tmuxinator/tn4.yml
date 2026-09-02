@@ -12,6 +12,7 @@ windows:
         - " while true; do bundle exec guard -G guardfile.minimal.rb --clear --no-notify; done"
   - llm:
       panes:
+        - " while true; do kilo --continue; done"
   - shell:
   - tests:
       panes:
@@ -25,4 +26,3 @@ windows:
   - server:
       panes:
         - " while true; do bin/rails server -P /tmp/server-tn4.pid; done"
-        - " while true; do kilo --continue; done"
